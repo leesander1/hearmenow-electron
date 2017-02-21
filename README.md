@@ -2,6 +2,10 @@ Hearmenow Electron App
 =======================
 [![dependencies Status](https://david-dm.org/leesander1/hearmenow-electron/status.svg)](https://david-dm.org/leesander1/hearmenow-electron)
 [![Build Status](https://travis-ci.org/leesander1/hearmenow-electron.svg?branch=master)](https://travis-ci.org/leesander1/hearmenow-electron)
+[![devDependency Status](https://david-dm.org/leesander1/hearmenow-electron.svg)](https://david-dm.org/leesander1/hearmenow-electron#info=devDependencies)
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/leesander1/hearmenow-electron/blob/master/license)
+
+**Get the Electron App**: https://hearmenowapp.com
 
 One Paragraph of project description goes here
 
@@ -81,7 +85,7 @@ See also the list of [contributors](https://github.com/leesander1/hearmenow-elec
 
 ## License
 
-[LICENSE](https://github.com/leesander1/hearmenow-electron/blob/master/license)
+[MIT](https://github.com/leesander1/hearmenow-electron/blob/master/license)
 
 ## Acknowledgements
 
