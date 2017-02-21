@@ -1,4 +1,7 @@
-# Hearmenow Electron App
+Hearmenow Electron App
+=======================
+[![dependencies Status](https://david-dm.org/leesander1/hearmenow-electron/status.svg)](https://david-dm.org/leesander1/hearmenow-electron)
+[![Build Status](https://travis-ci.org/leesander1/hearmenow-electron.svg?branch=master)](https://travis-ci.org/leesander1/hearmenow-electron)
 
 One Paragraph of project description goes here
 
@@ -67,14 +70,14 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/leesander1/hearmenow-electron/tags).
 
 ## Authors
 
 * **Mario Jimenez** - *Initial work* - [mario-hone](https://github.com/PurpleBooth)
 * [**Lee Sander**](https://github.com/leesander1) - *[leesander.com](https://leesander.com)*
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/leesander1/hearmenow-electron/contributors) who participated in this project.
 
 ## License
 
