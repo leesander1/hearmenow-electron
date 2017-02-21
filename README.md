@@ -58,8 +58,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* Dropwizard - Bla bla bla
-* Maven - Maybe
+* Electron - js
 * Atom - ergaerga
 
 ## Contributing
@@ -73,11 +72,13 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Mario Jimenez** - *Initial work* - [mario-hone](https://github.com/PurpleBooth)
+* [**Lee Sander**](https://github.com/leesander1) - *[leesander.com](https://leesander.com)*
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
-We haven't dealt with licensing yet.
+
+[LICENSE](https://github.com/leesander1/hearmenow-electron/blob/master/license)
 
 ## Acknowledgements
 
