@@ -86,3 +86,4 @@ See also the list of [contributors](https://github.com/your/project/contributors
 * [template for README](https://gist.githubusercontent.com/PurpleBooth/109311bb0361f32d87a2/raw/4a39c2139c4caa4686addc1e5dd490170fb82006/README-Template.md)
 * The labels used in the issues section were inspired by [this site](https://robinpowered.com/blog/best-practice-system-for-organizing-and-tagging-github-issues/)
 * Issue and PR Templates were inspired by [this site](https://www.talater.com/open-source-templates/#)
+* Dial pad template was from [this site](http://www.jqueryscript.net/other/Creating-A-Responsive-Phone-Dial-Pad-with-jQuery-CSS3-dialpad.html)
