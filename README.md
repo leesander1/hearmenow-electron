@@ -1,4 +1,11 @@
-# Hearmenow Electron App
+Hearmenow Electron App
+=======================
+[![dependencies Status](https://david-dm.org/leesander1/hearmenow-electron/status.svg)](https://david-dm.org/leesander1/hearmenow-electron)
+[![Build Status](https://travis-ci.org/leesander1/hearmenow-electron.svg?branch=master)](https://travis-ci.org/leesander1/hearmenow-electron)
+[![devDependency Status](https://david-dm.org/leesander1/hearmenow-electron.svg)](https://david-dm.org/leesander1/hearmenow-electron#info=devDependencies)
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/leesander1/hearmenow-electron/blob/master/license)
+
+**Get the Electron App**: https://hearmenowapp.com
 
 One Paragraph of project description goes here
 
@@ -67,18 +74,18 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/leesander1/hearmenow-electron/tags).
 
 ## Authors
 
 * **Mario Jimenez** - *Initial work* - [mario-hone](https://github.com/PurpleBooth)
 * [**Lee Sander**](https://github.com/leesander1) - *[leesander.com](https://leesander.com)*
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/leesander1/hearmenow-electron/contributors) who participated in this project.
 
 ## License
 
-[LICENSE](https://github.com/leesander1/hearmenow-electron/blob/master/license)
+[MIT](https://github.com/leesander1/hearmenow-electron/blob/master/license)
 
 ## Acknowledgements
 
@@ -86,3 +93,4 @@ See also the list of [contributors](https://github.com/your/project/contributors
 * [template for README](https://gist.githubusercontent.com/PurpleBooth/109311bb0361f32d87a2/raw/4a39c2139c4caa4686addc1e5dd490170fb82006/README-Template.md)
 * The labels used in the issues section were inspired by [this site](https://robinpowered.com/blog/best-practice-system-for-organizing-and-tagging-github-issues/)
 * Issue and PR Templates were inspired by [this site](https://www.talater.com/open-source-templates/#)
+* Dial pad template was from [this site](http://www.jqueryscript.net/other/Creating-A-Responsive-Phone-Dial-Pad-with-jQuery-CSS3-dialpad.html)
