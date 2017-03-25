@@ -93,7 +93,7 @@ $ npm run package-all
 To package apps with options:
 
 ```bash
-$ npm run package -- --[option]
+$ npm run package --[option]
 ```
 
 ## Further commands
@@ -126,7 +126,7 @@ This boilerplate uses a [two package.json structure](https://github.com/electron
 
 ## Authors
 
-* **Mario Jimenez** - *Initial work* - [mariots](https://github.com/mariots)
+* **Mario Jimenez** - *Initial work* - [mariots](https://github.com/mariots) - *[mariotj.com](https://mariotj.com)*
 * **Lee Sander** - *Initial work* -  [leesander1](https://github.com/leesander1) - *[leesander.com](https://leesander.com)*
 * **Kevin Taing** - *Initial work* - [kevintaing86](https://github.com/kevintaing86)
 
