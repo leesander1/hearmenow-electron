@@ -1,7 +1,8 @@
 {
   "name": "Hearmenow",
   "productName": "Hearmenow",
-  "version": "0.0.1",
+  "version": "1.0.1",
+  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "main": "main.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest \"(\\\\|/)test(\\\\|/)(?!.*e2e\\.spec\\.js).+\\.spec\\.js\"",
@@ -74,11 +75,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
-  },
-  "author": {
-    "name": "Mario Jimenez",
-    "email": "mariotjimenez@gmail.com",
-    "url": "https://github.com/mariots"
   },
   "license": "MIT",
   "bugs": {
