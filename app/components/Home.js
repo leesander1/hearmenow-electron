@@ -13,3 +13,14 @@ export default class Home extends Component {
     );
   }
 }
+var twilio_token = {};
+
+async function getToken() {
+  let request = await fetch('https://serene-island-28717.herokuapp.com/api/generateToken', {
+    method: 'POST'
+  });
+
+  twilio_token = await request.json();
+
+  console.log(twilio_token);
+}
