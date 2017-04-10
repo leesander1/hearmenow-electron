@@ -1,12 +1,17 @@
-// @flow
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
+
 import App from './containers/App';
 import HomePage from './containers/HomePage';
 
-
-export default (
+const appRoute = (
   <Route path="/" component={App}>
-    <IndexRoute component={HomePage} />
+
+    {/* Load the homepage page by default */}
+    <IndexRoute to='homepage'>
+    
+
   </Route>
 );
+
+export default appRoute;
