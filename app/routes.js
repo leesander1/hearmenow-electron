@@ -8,8 +8,8 @@ const appRoute = (
   <Route path="/" component={App}>
 
     {/* Load the homepage page by default */}
-    <IndexRoute to='homepage'>
-    
+    <IndexRoute to="homepage" />
+    {HomePage}
 
   </Route>
 );
