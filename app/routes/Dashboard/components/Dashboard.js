@@ -1,11 +1,14 @@
 // @flow
-import React, { Component } from 'react';
-import Home from '../components/Home';
+import React from 'react';
 
-export default class HomePage extends Component {
+class Dashboard extends React.Component {
   render() {
     return (
-      <Home />
+      <div>
+        Dashboard
+      </div>
     );
   }
 }
+
+export default Dashboard;
