@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import NavBar from '../components/NavBar';
+import { Layout, Header, HeaderRow, Content } from 'react-mdl'
 
 export default class App extends Component {
   props: {
@@ -9,9 +10,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-      <NavBar />
-        {this.props.children}
+      <div className="">
+        <NavBar />
+        <div className="content">
+          {this.props.children}
+        </div>
       </div>
     );
   }
