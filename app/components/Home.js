@@ -11,6 +11,7 @@ export default class Home extends Component {
       <div>
         <button onClick={getToken}>Get Token</button>
         <button onClick={sendCall}>Make call</button>
+        <button onClick={endCall}>End call</button>
         <div className={styles.container} data-tid="container" />
       </div>
     );
@@ -38,4 +39,10 @@ function sendCall() {
   var phone = {"phoneNumber": "4698773526"};
   Twilio.Device.connect(phone);
   console.log(twilio_token);
+}
+
+function endCall() {
+  // hang up call in progress
+  Twilio.Device.disconnectAll();
+  console.log('call ended');
 }
