@@ -1,15 +1,15 @@
 // @flow
 import React, { Component } from 'react';
 // import { Link } from 'react-router';
-import styles from './Contact.css';
+import styles from './Dialer.css';
 
 
 
-export default class Contact extends Component {
+export default class Dialer extends Component {
   render() {
     return (
       <div>
-      <h4>Contact</h4>
+      <h4>Dialer</h4>
       </div>
     );
   }
