@@ -1,5 +1,7 @@
 // @flow
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router';
+import Dashboard from './routes/Dashboard';
 
 export default class App extends Component {
   props: {
@@ -8,9 +10,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.children}
-      </div>
+      
     );
   }
 }

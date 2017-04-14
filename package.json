@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest \"(\\\\|/)test(\\\\|/)(?!.*e2e\\.spec\\.js).+\\.spec\\.js\"",
-    "test-all": "npm run lint && npm run flow && npm run test && npm run build",
+    "test-all": "npm run flow && npm run test && npm run build",
     "test-watch": "npm test -- --watch",
     "test-e2e": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest ./test/e2e.spec.js",
     "lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",

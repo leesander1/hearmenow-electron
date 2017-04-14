@@ -9,8 +9,9 @@ const appRoute = (
 
     {/* Load the homepage page by default */}
     <IndexRoute to="dashboard" />
-    {Dashboard}
 
+    {/* Set the children of the primary component */}
+    
   </Route>
 );
 
