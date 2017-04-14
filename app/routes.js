@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Link, Switch,Router, Route, IndexRoute } from 'react-router';
+import { Link, Switch, Router, Route, IndexRoute } from 'react-router';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
 import DialerPage from './containers/DialerPage';
