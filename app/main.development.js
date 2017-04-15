@@ -46,8 +46,10 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728
+    width: 375,
+    height: 667,
+    resizable: false,
+    skipTaskbar: true
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -272,6 +274,6 @@ app.on('ready', async () => {
       }]
     }];
     menu = Menu.buildFromTemplate(template);
-    mainWindow.setMenu(menu);
+    mainWindow.setMenu(null);
   }
 });

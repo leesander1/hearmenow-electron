@@ -1,18 +1,20 @@
+// @flow
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Link, Switch, Router, Route, IndexRoute } from 'react-router';
+import App from './containers/App';
+import HomePage from './containers/HomePage';
+import DialerPage from './containers/DialerPage';
+import ContactsPage from './containers/ContactsPage';
+import Settings from './components/Settings.js';
 
-import App from './App';
-import Dashboard from './routes/Dashboard';
 
-const appRoute = (
-  <Route path="/" component={App}>
-
-    {/* Load the homepage page by default */}
-    <IndexRoute to="dashboard" />
-
-    {/* Set the children of the primary component */}
-    
-  </Route>
+export default (
+  <Router>
+    <Route path="/" component={App}>
+      <Route path="home" component={HomePage} />
+      <Route path="dialer" component={DialerPage} />
+      <Route path="contacts" component={ContactsPage} />
+      <Route path="settings" component={Settings} />
+    </Route>
+  </Router>
 );
-
-export default appRoute;
