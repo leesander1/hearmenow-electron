@@ -7,9 +7,7 @@ export default class ContactsPage extends Component {
   render() {
     return (
       <List>
-        <Contact contact={contacts[0]}/>
-        <Contact contact={contacts[1]}/>
-        <Contact contact={contacts[2]}/>
+        <Contact contacts={contacts}/>
       </List>
     );
   }
@@ -17,6 +15,10 @@ export default class ContactsPage extends Component {
 
 // dummy data for Contacts
 var contacts = [
+  {
+    name: "Caleb",
+    number: "123"
+  },
   {
     name: "Kevin",
     number: "123"

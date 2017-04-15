@@ -7,11 +7,28 @@ import {ListItem, ListItemContent, ListItemAction, Icon} from 'react-mdl';
 
 export default class Contact extends Component {
   render() {
-    return (
-      <ListItem>
-        <ListItemContent avatar="person">{this.props.contact.name}</ListItemContent>
-        <ListItemAction><Icon name="call"/></ListItemAction>
-      </ListItem>
-    );
+    if(this.props.contacts != null) {
+      var contactList = this.props.contacts.map(function(contact) {
+        return(
+          <ListItem key={contact.name} className={styles.contanctTile}>
+            <ListItemContent avatar="person">{contact.name}</ListItemContent>
+            <ListItemAction><Icon name="call" className={styles.phone}/></ListItemAction>
+          </ListItem>
+        );
+      });
+
+      return (
+        <div>
+          {contactList}
+        </div>
+      );
+    }
+    else {
+      return(
+        <ListItem>
+          No Contacts
+        </ListItem>
+      );
+    }
   }
 }
