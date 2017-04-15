@@ -18,6 +18,8 @@ export default validate(merge(baseConfig, {
 
   entry: [
     `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr`,
+    '!!style!css!react-mdl/extra/material.min.css',
+    'react-mdl/extra/material.min.js',
     'babel-polyfill',
     './app/index'
   ],
