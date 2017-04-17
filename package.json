@@ -28,7 +28,7 @@
   "browserslist": "electron 1.4",
   "build": {
     "productName": "Hearmenow",
-    "appId": "",
+    "appId": "com.electron.hearmenow",
     "category": "public.app-category.tools",
     "dmg": {
       "contents": [
