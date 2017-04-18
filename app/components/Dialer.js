@@ -1,77 +1,9 @@
 // @flow
 import React, { Component } from 'react';
-
-
-class NumberInputText extends React.Component {
-  static propTypes = {
-    currentNumber: React.PropTypes.string.isRequired,
-    handleOnChange: React.PropTypes.string.isRequired,
-  }
-  render() {
-    return (
-      <div className="input-group input-group-sm">
-        <input
-          type="tel"
-          className="form-control"
-          placeholder="555-666-7777"
-          value={this.props.currentNumber}
-          onChange={this.props.handleOnChange}
-          />
-      </div>
-    );
-  }
-}
-
-class CountrySelectBox extends React.Component{
-  render() {
-    const self = this;
-
-    const CountryOptions = self.props.countries.map((country) => {
-      const flagClass = `flag flag- ${country.code}`;
-
-      return (
-        <li>
-          <a href="#" onClick={() => self.props.handleOnChange(country.cc)}>
-            <div className={flagClass} />
-            <span> { country.name } (+{ country.cc })</span>
-          </a>
-        </li>
-      );
-    });
-
-    return (
-      <div className="input-group-btn">
-        <button
-          type="button"
-          className="btn btn-default dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false">
-          +<span className="country-code">{self.props.countryCode}</span>
-          <i className="fa fa-caret-down" />
-        </button>
-        <ul className="dropdown-menu">
-          {CountryOptions}
-        </ul>
-      </div>
-    );
-  }
-}
-
-class LogBox extends React.Component {
-  static propTypes = {
-    text: React.PropTypes.string.isRequired,
-    smallText: React.PropTypes.string.isRequired,
-  }
-  render() {
-    return (
-      <div>
-        <div className="log">{this.props.text}</div>
-        <p>{this.props.smallText}</p>
-      </div>
-    );
-  }
-}
+import NumberInputText from './DialerComponents/NumberInputText';
+import CountrySelectBox from './DialerComponents/CountrySelectBox';
+import LogBox from './DialerComponents/LogBox';
+import CallButton from './DialerComponents/CallButton';
 
 
 export default class Dialer extends Component {
@@ -85,16 +17,7 @@ export default class Dialer extends Component {
   }
 }
 
-var CallButton = React.createClass({
-  render: function() {
-    return (
-      <button className={'btn btn-circle btn-success ' + (this.props.onPhone ? 'btn-danger': 'btn-success')}
-          onClick={this.props.handleOnClick} disabled={this.props.disabled}>
-        <i className={'fa fa-fw fa-phone '+ (this.props.onPhone ? 'fa-close': 'fa-phone')}></i>
-      </button>
-    );
-  }
-});
+
 
 var MuteButton = React.createClass({
   render: function() {
