@@ -36,5 +36,7 @@ export default validate({
 
   plugins: [],
 
-  externals: Object.keys(externals || {})
+  externals: {
+    twilio:'twilio'
+  }
 });
