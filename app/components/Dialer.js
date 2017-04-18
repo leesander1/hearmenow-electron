@@ -1,6 +1,80 @@
 // @flow
 import React, { Component } from 'react';
-// import { Link } from 'react-router';
+
+
+class NumberInputText extends React.Component {
+  render() {
+    return (
+      <div className="input-group input-group-sm">
+        <input
+          type="tel"
+          className="form-control"
+          placeholder="555-666-7777"
+          value={this.props.currentNumber}
+          onChange={this.props.handleOnChange}
+          />
+      </div>
+    );
+  }
+}
+
+NumberInputText.propTypes = {
+  currentNumber: React.PropTypes.string.isRequired,
+  handleOnChange: React.PropTypes.string.isRequired,
+};
+
+
+class CountrySelectBox extends React.Component{
+  render() {
+    const self = this;
+
+    const CountryOptions = self.props.countries.map((country) => {
+      const flagClass = `flag flag- ${country.code}`;
+
+      return (
+        <li>
+          <a href="#" onClick={() => self.props.handleOnChange(country.cc)}>
+            <div className={flagClass} />
+            <span> { country.name } (+{ country.cc })</span>
+          </a>
+        </li>
+      );
+    });
+
+    return (
+      <div className="input-group-btn">
+        <button
+          type="button"
+          className="btn btn-default dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false">
+          +<span className="country-code">{self.props.countryCode}</span>
+          <i className="fa fa-caret-down" />
+        </button>
+        <ul className="dropdown-menu">
+          {CountryOptions}
+        </ul>
+      </div>
+    );
+  }
+}
+
+class LogBox extends React.Component {
+  static propTypes = {
+    text: React.PropTypes.string.isRequired,
+    smallText: React.PropTypes.string.isRequired,
+  }
+  render() {
+    return (
+      <div>
+        <div className="log">{this.props.text}</div>
+        <p>{this.props.smallText}</p>
+      </div>
+    );
+  }
+}
+
 
 export default class Dialer extends Component {
   render() {
@@ -12,60 +86,6 @@ export default class Dialer extends Component {
     );
   }
 }
-
-var NumberInputText = React.createClass({
-  render: function() {
-    return (
-      <div className="input-group input-group-sm">
-        <input type="tel" className="form-control" placeholder="555-666-7777"
-            value={this.props.currentNumber} onChange={this.props.handleOnChange} />
-      </div>
-    );
-  }
-});
-
-var CountrySelectBox = React.createClass({
-  render: function() {
-    var self = this;
-
-    var CountryOptions = self.props.countries.map(function(country) {
-      var flagClass = 'flag flag-' + country.code;
-
-      return (
-        <li>
-          <a href="#" onClick={() => self.props.handleOnChange(country.cc)}>
-            <div className={ flagClass }></div>
-            <span> { country.name } (+{ country.cc })</span>
-          </a>
-        </li>
-      );
-    });
-
-    return (
-      <div className="input-group-btn">
-        <button type="button" className="btn btn-default dropdown-toggle"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            +<span className="country-code">{self.props.countryCode}</span>
-            <i className="fa fa-caret-down"></i>
-        </button>
-        <ul className="dropdown-menu">
-          {CountryOptions}
-        </ul>
-      </div>
-    );
-  }
-});
-
-var LogBox = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <div className="log">{this.props.text}</div>
-        <p>{this.props.smallText}</p>
-      </div>
-    );
-  }
-});
 
 var CallButton = React.createClass({
   render: function() {
