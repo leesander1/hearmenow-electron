@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 
 
 class NumberInputText extends React.Component {
+  static propTypes = {
+    currentNumber: React.PropTypes.string.isRequired,
+    handleOnChange: React.PropTypes.string.isRequired,
+  }
   render() {
     return (
       <div className="input-group input-group-sm">
@@ -17,12 +21,6 @@ class NumberInputText extends React.Component {
     );
   }
 }
-
-NumberInputText.propTypes = {
-  currentNumber: React.PropTypes.string.isRequired,
-  handleOnChange: React.PropTypes.string.isRequired,
-};
-
 
 class CountrySelectBox extends React.Component{
   render() {
