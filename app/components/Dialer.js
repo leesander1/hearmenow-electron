@@ -5,6 +5,7 @@ import LogBox from './DialerComponents/LogBox';
 import CallButton from './DialerComponents/CallButton';
 import MuteButton from './DialerComponents/MuteButton';
 
+const Twilio = require('twilio-js');
 
 export default class Dialer extends Component {
   render() {

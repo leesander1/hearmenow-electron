@@ -1,12 +1,11 @@
 // @flow
 import React from 'react';
-import { Link, Switch, Router, Route, IndexRoute } from 'react-router';
+import { Router, Route } from 'react-router';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
 import DialerPage from './containers/DialerPage';
 import ContactsPage from './containers/ContactsPage';
-import Settings from './components/Settings.js';
-
+import Settings from './components/Settings';
 
 export default (
   <Router>
