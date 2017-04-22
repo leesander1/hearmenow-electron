@@ -1,9 +1,9 @@
-// @flow
 import React, { Component } from 'react';
 import NumberInputText from './DialerComponents/NumberInputText';
 import CountrySelectBox from './DialerComponents/CountrySelectBox';
 import LogBox from './DialerComponents/LogBox';
 import CallButton from './DialerComponents/CallButton';
+import MuteButton from './DialerComponents/MuteButton';
 
 
 export default class Dialer extends Component {
@@ -17,22 +17,11 @@ export default class Dialer extends Component {
   }
 }
 
-
-
-var MuteButton = React.createClass({
-  render: function() {
-    return (
-      <button className="btn btn-circle btn-default" onClick={this.props.handleOnClick}>
-        <i className={'fa fa-fw fa-microphone ' + (this.props.muted ? 'fa-microphone-slash': 'fa-microphone')}></i>
-      </button>
-    );
-  }
-});
-
 var DTMFTone = React.createClass({
   // Handle numeric buttons
   sendDigit(digit) {
     Twilio.Device.activeConnection().sendDigits(digit);
+
   },
 
   render: function() {
@@ -131,7 +120,7 @@ var DialerApp = React.createClass({
 
   // Handle country code selection
   handleChangeCountryCode(countryCode) {
-    this.setState({countryCode: countryCode});
+    this.setState({ countryCode: countryCode });
   },
 
   // Handle number input
@@ -175,16 +164,23 @@ var DialerApp = React.createClass({
       <div id="dialer">
         <div id="dial-form" className="input-group input-group-sm">
 
-          <CountrySelectBox countries={this.state.countries} countryCode={this.state.countryCode}
-              handleOnChange={this.handleChangeCountryCode}/>
+          <CountrySelectBox
+            countries={this.state.countries}
+            countryCode={this.state.countryCode}
+            handleOnChange={this.handleChangeCountryCode} />
 
-          <NumberInputText currentNumber={this.state.currentNumber} handleOnChange={this.handleChangeNumber} />
+          <NumberInputText
+            currentNumber={this.state.currentNumber}
+            handleOnChange={this.handleChangeNumber} />
 
         </div>
 
         <div className="controls">
 
-          <CallButton handleOnClick={this.handleToggleCall} disabled={!this.state.isValidNumber} onPhone={this.state.onPhone}/>
+          <CallButton
+            handleOnClick={this.handleToggleCall}
+            disabled={!this.state.isValidNumber}
+            onPhone={this.state.onPhone} />
 
           { this.state.onPhone ? <MuteButton handleOnClick={this.handleToggleMute} muted={this.state.muted} /> : null }
 
