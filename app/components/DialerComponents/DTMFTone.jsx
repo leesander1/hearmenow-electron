@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Twilio = require('twilio-js');
+// const Twilio = require('twilio-js');
 
 class DTMFTone extends React.Component {
   static propTypes = {
@@ -10,9 +10,8 @@ class DTMFTone extends React.Component {
   // Handle numeric buttons
   sendDigit(digit) {
     this.digit = digit;
-    console.log(digit);
     this.props.handleOnChange(this.digit);
-    Twilio.Device.activeConnection().sendDigits(this.digit);
+    // Twilio.Device.activeConnection().sendDigits(this.digit);
   }
 
   render() {

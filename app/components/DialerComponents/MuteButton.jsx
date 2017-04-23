@@ -2,7 +2,7 @@ import React from 'react';
 
 class MuteButton extends React.Component {
   static propTypes = {
-    handleOnClick: React.PropTypes.bool.isRequired,
+    handleOnClick: React.PropTypes.func.isRequired,
     muted: React.PropTypes.bool.isRequired
   }
   render() {

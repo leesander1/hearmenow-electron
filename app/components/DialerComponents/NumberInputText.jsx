@@ -2,7 +2,7 @@ import React from 'react';
 
 class NumberInputText extends React.Component {
   static propTypes = {
-    currentNumber: React.PropTypes.number.isRequired,
+    currentNumber: React.PropTypes.string.isRequired,
     handleOnChange: React.PropTypes.func.isRequired,
   }
 
