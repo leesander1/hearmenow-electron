@@ -84,7 +84,7 @@ var DialerApp = React.createClass({
 
   // Handle Dialer Input
   handleDialerInput(n) {
-    const dial = `${this.state.currentNumber}${n}`;
+    const dial = `${this.state.currentNumber + n}`;
     this.setState({
       currentNumber: dial,
       isValidNumber: /^([0-9]|#|\*)+$/.test(dial.replace(/[-()\s]/g, ''))
