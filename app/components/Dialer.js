@@ -6,8 +6,6 @@ import CallButton from './DialerComponents/CallButton';
 import MuteButton from './DialerComponents/MuteButton';
 import DTMFTone from './DialerComponents/DTMFTone';
 
-const Twilio = require('twilio-js');
-
 export default class Dialer extends Component {
   render() {
     return (
@@ -26,7 +24,7 @@ var DialerApp = React.createClass({
       log: 'Connecting...',
       onPhone: false,
       countryCode: '1',
-      currentNumber: '',
+      currentNumber: '8067895172',
       isValidNumber: false,
       countries: [
         { name: 'United States', cc: '1', code: 'us' },
@@ -44,29 +42,17 @@ var DialerApp = React.createClass({
     };
   },
 
-  // Initialize after component creation
-  componentDidMount() {
-    const self = this;
-
-    // Fetch Twilio capability token from our Node.js server
-    $.getJSON('/token').done((data) => {
-      Twilio.Device.setup(data.token);
-    }).fail((err) => {
-      console.log(err);
-      self.setState({ log: 'Could not fetch token, see console.log' });
+  async componentDidMount() {
+    console.log('Component Mounted');
+    const request = await fetch('https://serene-island-28717.herokuapp.com/api/generateToken', {
+      method: 'POST'
     });
 
-    // Configure event handlers for Twilio Device
-    Twilio.Device.disconnect(() => {
-      self.setState({
-        onPhone: false,
-        log: 'Call ended.'
-      });
-    });
-
-    Twilio.Device.ready(() => {
-      self.log = 'Connected';
-    });
+    console.log(request);
+    const twilioToken = await request.json();
+    console.log(twilioToken.token);
+    Twilio.Device.setup(twilioToken.token);
+    console.log(twilioToken);
   },
 
   // Handle country code selection
@@ -109,8 +95,10 @@ var DialerApp = React.createClass({
       });
       // make outbound call with current number
       const n = `+ ${this.state.countryCode + this.state.currentNumber.replace(/\D/g, '')}`;
-      Twilio.Device.connect({ number: n });
+      console.log(`Attempting to connect to: ${n}`);
+      Twilio.Device.connect({ phoneNumber: n });
       this.setState({ log: `Calling ${n}` });
+      console.log(this.state.log);
     } else {
       // hang up call in progress
       Twilio.Device.disconnectAll();
