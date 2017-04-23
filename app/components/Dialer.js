@@ -53,7 +53,7 @@ var DialerApp = React.createClass({
       Twilio.Device.setup(data.token);
     }).fail((err) => {
       console.log(err);
-      self.setState({ log: 'Could not fetch token, see console.log'} );
+      self.setState({ log: 'Could not fetch token, see console.log' });
     });
 
     // Configure event handlers for Twilio Device
@@ -79,6 +79,15 @@ var DialerApp = React.createClass({
     this.setState({
       currentNumber: e.target.value,
       isValidNumber: /^([0-9]|#|\*)+$/.test(e.target.value.replace(/[-()\s]/g, ''))
+    });
+  },
+
+  // Handle Dialer Input
+  handleDialerInput(n) {
+    const dial = `${this.state.currentNumber}${n}`;
+    this.setState({
+      currentNumber: dial,
+      isValidNumber: /^([0-9]|#|\*)+$/.test(dial.replace(/[-()\s]/g, ''))
     });
   },
 
@@ -139,7 +148,8 @@ var DialerApp = React.createClass({
 
         </div>
 
-        <DTMFTone />
+        <DTMFTone
+          handleOnChange={this.handleDialerInput} />
 
         <LogBox text={this.state.log} />
 

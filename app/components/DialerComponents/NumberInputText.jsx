@@ -1,6 +1,11 @@
 import React from 'react';
 
 class NumberInputText extends React.Component {
+  static propTypes = {
+    currentNumber: React.PropTypes.number.isRequired,
+    handleOnChange: React.PropTypes.func.isRequired,
+  }
+
   render() {
     return (
       <div className="input-group input-group-sm">
@@ -14,10 +19,5 @@ class NumberInputText extends React.Component {
     );
   }
 }
-
-NumberInputText.propTypes = {
-  currentNumber: React.PropTypes.number.isRequired,
-  handleOnChange: React.PropTypes.string.isRequired,
-};
 
 export default NumberInputText;

@@ -5,6 +5,7 @@ class LogBox extends React.Component {
     text: React.PropTypes.string.isRequired,
     smallText: React.PropTypes.string.isRequired,
   }
+
   render() {
     return (
       <div>

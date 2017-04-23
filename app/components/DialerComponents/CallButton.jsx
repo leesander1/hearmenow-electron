@@ -6,6 +6,7 @@ class CallButton extends React.Component {
     handleOnClick: React.PropTypes.func.isRequired,
     disabled: React.PropTypes.bool.isRequired
   }
+
   render() {
     return (
       <button

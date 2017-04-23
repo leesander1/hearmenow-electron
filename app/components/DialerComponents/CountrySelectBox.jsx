@@ -9,7 +9,7 @@ class CountrySelectBox extends React.Component {
 
       return (
         <li>
-          <a href="#" onClick={() => self.props.handleOnChange(country.cc)}>
+          <a href="" onClick={() => self.props.handleOnChange(country.cc)}>
             <div className={flagClass} />
             <span> { country.name } (+{ country.cc })</span>
           </a>
