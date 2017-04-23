@@ -1,5 +1,7 @@
 import React from 'react';
 
+const Twilio = require('twilio-js');
+
 class DTMFTone extends React.Component {
   // Handle numeric buttons
   sendDigit(digit) {

@@ -4,6 +4,7 @@ import CountrySelectBox from './DialerComponents/CountrySelectBox';
 import LogBox from './DialerComponents/LogBox';
 import CallButton from './DialerComponents/CallButton';
 import MuteButton from './DialerComponents/MuteButton';
+import DTMFTone from './DialerComponents/DTMFTone';
 
 const Twilio = require('twilio-js');
 
@@ -17,57 +18,6 @@ export default class Dialer extends Component {
     );
   }
 }
-
-var DTMFTone = React.createClass({
-  // Handle numeric buttons
-  sendDigit(digit) {
-    Twilio.Device.activeConnection().sendDigits(digit);
-
-  },
-
-  render: function() {
-    return (
-      <div className="keys">
-        <div className="key-row">
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('1')}>1</button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('2')}>2
-            <span>A B C</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('3')}>3
-            <span>D E F</span>
-          </button>
-        </div>
-        <div className="key-row">
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('4')}>4
-            <span>G H I</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('5')}>5
-            <span>J K L</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('6')}>6
-            <span>M N O</span>
-          </button>
-        </div>
-        <div className="key-row">
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('7')}>7
-            <span>P Q R S</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('8')}>8
-            <span>T U V</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('9')}>9
-            <span>W X Y Z</span>
-          </button>
-        </div>
-        <div className="key-row">
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('*')}>*</button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('0')}>0</button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('#')}>#</button>
-        </div>
-      </div>
-    );
-  }
-});
 
 var DialerApp = React.createClass({
   getInitialState() {
@@ -91,7 +41,7 @@ var DialerApp = React.createClass({
         { name: 'Spain', cc: '34', code: 'es' },
         { name: 'Brazil', cc: '55', code: 'br' },
       ]
-    }
+    };
   },
 
   // Initialize after component creation
@@ -103,7 +53,7 @@ var DialerApp = React.createClass({
       Twilio.Device.setup(data.token);
     }).fail(function(err) {
       console.log(err);
-      self.setState({log: 'Could not fetch token, see console.log'});
+      self.setState({ log: 'Could not fetch token, see console.log'} );
     });
 
     // Configure event handlers for Twilio Device
@@ -121,14 +71,14 @@ var DialerApp = React.createClass({
 
   // Handle country code selection
   handleChangeCountryCode(countryCode) {
-    this.setState({ countryCode: countryCode });
+    this.setState({ countryCode });
   },
 
   // Handle number input
   handleChangeNumber(e) {
     this.setState({
       currentNumber: e.target.value,
-      isValidNumber: /^([0-9]|#|\*)+$/.test(e.target.value.replace(/[-()\s]/g,''))
+      isValidNumber: /^([0-9]|#|\*)+$/.test(e.target.value.replace(/[-()\s]/g, ''))
     });
   },
 
@@ -136,7 +86,7 @@ var DialerApp = React.createClass({
   handleToggleMute() {
     var muted = !this.state.muted;
 
-    this.setState({muted: muted});
+    this.setState({ muted });
     Twilio.Device.activeConnection().mute(muted);
   },
 
@@ -187,7 +137,7 @@ var DialerApp = React.createClass({
 
         </div>
 
-        { this.state.onPhone ? <DTMFTone/> : null }
+        { this.state.onPhone ? <DTMFTone /> : null }
 
         <LogBox text={this.state.log}/>
 
