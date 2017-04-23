@@ -46,25 +46,25 @@ var DialerApp = React.createClass({
 
   // Initialize after component creation
   componentDidMount() {
-    var self = this;
+    const self = this;
 
     // Fetch Twilio capability token from our Node.js server
-    $.getJSON('/token').done(function(data) {
+    $.getJSON('/token').done((data) => {
       Twilio.Device.setup(data.token);
-    }).fail(function(err) {
+    }).fail((err) => {
       console.log(err);
       self.setState({ log: 'Could not fetch token, see console.log'} );
     });
 
     // Configure event handlers for Twilio Device
-    Twilio.Device.disconnect(function() {
+    Twilio.Device.disconnect(() => {
       self.setState({
         onPhone: false,
         log: 'Call ended.'
       });
     });
 
-    Twilio.Device.ready(function() {
+    Twilio.Device.ready(() => {
       self.log = 'Connected';
     });
   },
@@ -84,7 +84,7 @@ var DialerApp = React.createClass({
 
   // Handle muting
   handleToggleMute() {
-    var muted = !this.state.muted;
+    const muted = !this.state.muted;
 
     this.setState({ muted });
     Twilio.Device.activeConnection().mute(muted);
@@ -97,20 +97,18 @@ var DialerApp = React.createClass({
       this.setState({
         muted: false,
         onPhone: true
-      })
+      });
       // make outbound call with current number
-      var n = '+' + this.state.countryCode + this.state.currentNumber.replace(/\D/g, '');
+      const n = `+ ${this.state.countryCode + this.state.currentNumber.replace(/\D/g, '')}`;
       Twilio.Device.connect({ number: n });
-      this.setState({log: 'Calling ' + n})
+      this.setState({ log: `Calling ${n}` });
     } else {
       // hang up call in progress
       Twilio.Device.disconnectAll();
     }
   },
 
-  render: function() {
-    var self = this;
-
+  render() {
     return (
       <div id="dialer">
         <div id="dial-form" className="input-group input-group-sm">
@@ -133,13 +131,17 @@ var DialerApp = React.createClass({
             disabled={!this.state.isValidNumber}
             onPhone={this.state.onPhone} />
 
-          { this.state.onPhone ? <MuteButton handleOnClick={this.handleToggleMute} muted={this.state.muted} /> : null }
+          { this.state.onPhone
+            ? <MuteButton
+              handleOnClick={this.handleToggleMute}
+              muted={this.state.muted} />
+            : null }
 
         </div>
 
-        { this.state.onPhone ? <DTMFTone /> : null }
+        <DTMFTone />
 
-        <LogBox text={this.state.log}/>
+        <LogBox text={this.state.log} />
 
       </div>
     );
