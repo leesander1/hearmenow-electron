@@ -5,7 +5,7 @@ class CountrySelectBox extends React.Component {
     const self = this;
 
     const CountryOptions = self.props.countries.map((country) => {
-      const flagClass = `flag flag- ${country.code}`;
+      const flagClass = `flag flag-${country.code}`;
 
       return (
         <li>
