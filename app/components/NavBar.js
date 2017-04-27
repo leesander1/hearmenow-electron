@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { IconButton } from 'react-mdl';
-import styles from './NavBar.css';
 
 export default class NavBar extends Component {
 

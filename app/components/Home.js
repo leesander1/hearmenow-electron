@@ -14,6 +14,7 @@ export default class Home extends Component {
     );
   }
 }
+
 var twilio_token = {};
 
 async function getToken() {

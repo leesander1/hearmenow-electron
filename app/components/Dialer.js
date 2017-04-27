@@ -24,7 +24,7 @@ var DialerApp = React.createClass({
       log: 'Connecting...',
       onPhone: false,
       countryCode: '1',
-      currentNumber: '8067895172',
+      currentNumber: '',
       isValidNumber: false,
       countries: [
         { name: 'United States', cc: '1', code: 'us' },
@@ -43,16 +43,16 @@ var DialerApp = React.createClass({
   },
 
   async componentDidMount() {
-    console.log('Component Mounted');
+    // console.log('Component Mounted');
     const request = await fetch('https://serene-island-28717.herokuapp.com/api/generateToken', {
       method: 'POST'
     });
 
-    console.log(request);
+    // console.log(request);
     const twilioToken = await request.json();
-    console.log(twilioToken.token);
+    // console.log(twilioToken.token);
     Twilio.Device.setup(twilioToken.token);
-    console.log(twilioToken);
+    // console.log(twilioToken);
   },
 
   // Handle country code selection
@@ -95,13 +95,19 @@ var DialerApp = React.createClass({
       });
       // make outbound call with current number
       const n = `+ ${this.state.countryCode + this.state.currentNumber.replace(/\D/g, '')}`;
-      console.log(`Attempting to connect to: ${n}`);
+      // console.log(`Attempting to connect to: ${n}`);
       Twilio.Device.connect({ phoneNumber: n });
       this.setState({ log: `Calling ${n}` });
-      console.log(this.state.log);
+      // console.log(this.state.log);
     } else {
-      // hang up call in progress
+      // console.log('Hang up');
+      // hang up call in progress.
       Twilio.Device.disconnectAll();
+
+      // Update state to make call button green again.
+      this.setState({
+        onPhone: false
+      });
     }
   },
 
