@@ -25,6 +25,7 @@
     "react/prefer-stateless-function": "off",
     "react/jsx-closing-bracket-location": "off",
     "react/require-default-props": "off",
+    "no-undef": "off",
     "flowtype-errors/show-errors": 2,
   },
   "plugins": [
