@@ -29,7 +29,7 @@ class CountrySelectBox extends React.Component {
           <i className="fa fa-caret-down" />
         </button>
         <ul className="dropdown-menu">
-          {CountryOptions}
+          { /* CountryOptions */ }
         </ul>
       </div>
     );
