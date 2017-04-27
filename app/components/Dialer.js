@@ -52,7 +52,15 @@ var DialerApp = React.createClass({
     const twilioToken = await request.json();
     // console.log(twilioToken.token);
     Twilio.Device.setup(twilioToken.token);
+
+    Twilio.Device.ready(() => {
+      this.updateLog('It\'s Ready');
+    });
     // console.log(twilioToken);
+  },
+
+  updateLog(text) {
+    this.setState({ log: text });
   },
 
   // Handle country code selection
@@ -106,7 +114,8 @@ var DialerApp = React.createClass({
 
       // Update state to make call button green again.
       this.setState({
-        onPhone: false
+        onPhone: false,
+        log: 'Ended Call Successfully'
       });
     }
   },

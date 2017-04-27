@@ -29,7 +29,7 @@ async function getToken() {
 }
 
 Twilio.Device.ready(() => {
-  console.log('Its ready');
+  //console.log('Its ready');
 });
 
 
