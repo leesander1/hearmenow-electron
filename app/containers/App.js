@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/NavBar/NavBar';
 import Footer from '../components/Footer/Footer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
