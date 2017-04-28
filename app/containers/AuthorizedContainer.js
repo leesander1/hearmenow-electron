@@ -1,11 +1,12 @@
 // @Flow
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { loginUser } from '../actions';
 import { connect, dispatch, navigateTo } from 'react-redux';
 
 class AuthorizedContainer extends React.Component {
   componentDidMount() {
-    const { dispatch, currentURL, isLoggedIn } = this.props
+    const { dispatch, currentURL } = this.props
 
     if (!isLoggedIn) {
       // set the current url/path for future redirection (we use a Redux action)
@@ -19,7 +20,7 @@ class AuthorizedContainer extends React.Component {
     if (isLoggedIn) {
       return this.props.children
     } else {
-      return null
+      return this.props.children
     }
   }
 }
