@@ -33,9 +33,16 @@ Twilio.Device.ready(() => {
   console.log('Its ready');
 });
 
+Twilio.Device.incoming((connection) => {
+  // send a system notification
+  notifier.notify('test');
+  connection.accept(() => {
+    console.log('oh yaaaa');
+  });
+});
 
 function sendCall() {
-  var phone = {"phoneNumber": "4698773526"};
+  var phone = {"phoneNumber": "4323498373"};
   Twilio.Device.connect(phone);
   console.log(twilio_token);
 }
