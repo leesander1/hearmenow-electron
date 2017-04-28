@@ -1,0 +1,26 @@
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  /*background-color: rgba(0, 188, 212, 1.0);*/
+  background-color: #EEEEEE;
+  width: 100%;
+  height: 24px;
+  padding-top:2px;
+  padding-bottom:2px;
+}
+
+.footerContent {
+  display: inline-flex;
+  height:inherit;
+  vertical-align: middle;
+  /*align-items: center;*/
+  justify-content: center;
+  float:right;
+  padding-right: 5px;
+  margin:auto;
+}
+
+.footerText {
+  font-size:16px;
+}
