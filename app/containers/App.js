@@ -7,6 +7,7 @@ import Footer from '../components/Footer/Footer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { loginUser } from '../actions';
+import { browserHistory } from 'react-router';
 
 injectTapEventPlugin();
 
@@ -16,14 +17,15 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { dispatch, redirectUrl } = this.props
-    const isLoggingOut = prevProps.isLoggedIn && !this.props.isLoggedIn
-    const isLoggingIn = !prevProps.isLoggedIn && this.props.isLoggedIn
+    const { dispatch, redirectUrl } = this.props;
+    const authenticated = this.props.authenticated;
 
-    if (isLoggingIn) {
+    if (authenticated) {
       dispatch(navigateTo(redirectUrl))
-    } else if (isLoggingOut) {
+    } else {
       // do any kind of cleanup or post-logout redirection here
+      console.log('Nope, not authenticated');
+      browserHistory.push('/login');
     }
   }
   render() {
@@ -45,7 +47,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    isLoggedIn: state.AUTH_USER,
+    //isLoggedIn: state.AUTH_USER,
+    authenticated: state.auth.authenticated,
     redirectUrl: state.redirectUrl
   }
 }

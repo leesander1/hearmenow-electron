@@ -3,21 +3,35 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { loginUser } from '../actions';
 import { connect, dispatch, navigateTo } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 class AuthorizedContainer extends React.Component {
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
+
+  constructor(props){
+    super(props);
+    if(!this.props.authenticated){
+      console.log('Hey the you are not authorized!');
+      browserHistory.replace('login');
+    }
+  }
+
   componentDidMount() {
     const { dispatch, currentURL } = this.props
 
-    if (!isLoggedIn) {
+    if (!this.props.authenticated) {
       // set the current url/path for future redirection (we use a Redux action)
       // then redirect (we use a React Router method)
-      dispatch(navigateTo(currentURL))
-      browserHistory.replace("login")
+      //dispatch(navigateTo(currentURL))
+      console.log('Yo yo, not logged in');
+      browserHistory.replace('login');
     }
   }
 
   render() {
-    if (isLoggedIn) {
+    if (this.props.authenticated) {
       return this.props.children
     } else {
       return this.props.children
@@ -31,7 +45,8 @@ class AuthorizedContainer extends React.Component {
 // the current position in the app.
 function mapStateToProps(state, ownProps) {
   return {
-    isLoggedIn: state.loggedIn,
+    //isLoggedIn: state.loggedIn,
+    authenticated: state.auth.authenticated,
     currentURL: ownProps.location.pathname
   }
 }
