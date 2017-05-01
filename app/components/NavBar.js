@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { IconButton } from 'react-mdl';
+import styles from './NavBar.css';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import FontIcon from 'material-ui/FontIcon';
 
 export default class NavBar extends Component {
 
@@ -11,13 +13,17 @@ export default class NavBar extends Component {
 
   render() {
     return (
-      <div className="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <div className="mdl-tabs__tab-bar">
-          <Link className="mdl-tabs__tab" to="home"><IconButton ripple colored name="home" /></Link>
-          <Link className="mdl-tabs__tab" to="dialer"><IconButton ripple colored name="call" /></Link>
-          <Link className="mdl-tabs__tab" to="contacts"><IconButton ripple colored name="group" /></Link>
-          <Link className="mdl-tabs__tab" to="settings"><IconButton ripple colored name="settings" /></Link>
-        </div>
+      <div className="">
+        <Tabs className="" onChange={this.active} value={this.state}>
+          <Tab value={0} containerElement={<Link to="home"/>} icon={<FontIcon className="material-icons">home</FontIcon>}>
+          </Tab>
+          <Tab value={1} containerElement={<Link to="dialer"/>} icon={<FontIcon className="material-icons">phone</FontIcon>}>
+          </Tab>
+          <Tab value={2} containerElement={<Link to="contacts"/>} icon={<FontIcon className="material-icons">person</FontIcon>}>
+          </Tab>
+          <Tab value={3} containerElement={<Link to="settings"/>} icon={<FontIcon className="material-icons">settings</FontIcon>}>
+          </Tab>
+        </Tabs>
       </div>
     );
   }
