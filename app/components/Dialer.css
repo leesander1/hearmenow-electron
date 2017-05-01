@@ -9,11 +9,11 @@ button:focus, button:active, button:hover, label:focus, .btn:active,
     -webkit-appearance:none;
 }
 
-.dropdown-menu li a {
+.dropdownMenu li a {
   padding: 3px 10px;
 }
 
-.btn-circle {
+.btnCircle {
   width: 49px;
   height: 49px;
   text-align: center;
@@ -42,15 +42,15 @@ button:focus, button:active, button:hover, label:focus, .btn:active,
   color: #fff;
 }
 
-.key-row {
+.keyRow {
   margin-bottom: 20px;
 }
 
-.key-row .btn {
+.keyRow .btn {
   font-weight: 100;
 }
 
-.key-row .btn span {
+.keyRow .btn span {
   display: block;
   padding-top: 2px;
   font-size: 10px;

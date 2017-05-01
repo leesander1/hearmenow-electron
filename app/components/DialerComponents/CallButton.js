@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../Dialer.css';
 
 class CallButton extends React.Component {
   static propTypes = {
@@ -10,7 +11,7 @@ class CallButton extends React.Component {
   render() {
     return (
       <button
-        className={`btn btn-circle btn-success ${(this.props.onPhone ? 'btn-danger' : 'btn-success')}`}
+        className={`${[styles.btn, styles.btnCircle]} btn-success ${(this.props.onPhone ? 'btn-danger' : 'btn-success')}`}
         onClick={this.props.handleOnClick}
         disabled={this.props.disabled}>
         <i className={`fa fa-fw fa-phone ${(this.props.onPhone ? 'fa-close' : 'fa-phone')}`} />
