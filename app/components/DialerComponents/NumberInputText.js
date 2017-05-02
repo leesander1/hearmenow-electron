@@ -1,5 +1,6 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import styles from '../Dialer.css';
 
 class NumberInputText extends React.Component {
   static propTypes = {
@@ -9,7 +10,7 @@ class NumberInputText extends React.Component {
 
   render() {
     return (
-      <div className="center-text">
+      <div className={`center-text ${styles.phoneNumberInput}`}>
         <TextField
           hintText="555-555-7777"
           value={this.props.currentNumber}

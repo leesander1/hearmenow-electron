@@ -9,7 +9,6 @@ export default class Dialer extends Component {
   render() {
     return (
       <div>
-        <h4 className="center-text">Dialer</h4>
         <DialerApp />
       </div>
     );
@@ -83,7 +82,7 @@ var DialerApp = React.createClass({
         onPhone: true
       });
       // make outbound call with current number
-      const n = `+1 ${this.state.currentNumber.replace(/\D/g, '')}`;
+      const n = `+1${this.state.currentNumber.replace(/\D/g, '')}`;
       // console.log(`Attempting to connect to: ${n}`);
       Twilio.Device.connect({ phoneNumber: n });
       this.setState({ log: `Calling ${n}` });
@@ -112,12 +111,15 @@ var DialerApp = React.createClass({
 
         </div>
 
-        <div className="controls">
+        <DTMFTone
+          handleOnChange={this.handleDialerInput} />
 
-          <CallButton
-            handleOnClick={this.handleToggleCall}
-            disabled={!this.state.isValidNumber}
-            onPhone={this.state.onPhone} />
+        <CallButton
+          handleOnClick={this.handleToggleCall}
+          disabled={!this.state.isValidNumber}
+          onPhone={this.state.onPhone} />
+
+        <div className="controls">
 
           { this.state.onPhone
             ? <MuteButton
@@ -126,9 +128,6 @@ var DialerApp = React.createClass({
             : null }
 
         </div>
-
-        <DTMFTone
-          handleOnChange={this.handleDialerInput} />
 
         <LogBox text={this.state.log} />
 

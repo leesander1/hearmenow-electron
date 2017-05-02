@@ -13,7 +13,7 @@ class CallButton extends React.Component {
 
   render() {
     return (
-      <div className={styles.callButtonPosition}>
+      <div className={styles.centerDialer}>
         <FloatingActionButton
           backgroundColor={`${(this.props.onPhone ? red500 : green500)}`}
           onClick={this.props.handleOnClick}

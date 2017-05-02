@@ -1,5 +1,6 @@
 import React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import styles from '../Dialer.css';
 
 class DTMFTone extends React.Component {
   static propTypes = {
@@ -15,49 +16,78 @@ class DTMFTone extends React.Component {
 
   render() {
     const style = {
+      marginLeft: 20,
       marginRight: 20,
     };
     return (
-      <div className="keys">
-        <div className="key-row">
-          <FloatingActionButton style={style}>
-            1
+      <div className={styles.keys}>
+        <div className={styles.keyRow}>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('1')}>1
           </FloatingActionButton>
-
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('1')}>1</button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('2')}>2
-            <span>A B C</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('3')}>3
-            <span>D E F</span>
-          </button>
+          <FloatingActionButton
+            style={style}
+            onClick={() => this.sendDigit('2')}>2
+              <span>A B C</span>
+          </FloatingActionButton>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('3')}>3
+              <span>D E F</span>
+          </FloatingActionButton>
         </div>
-        <div className="key-row">
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('4')}>4
-            <span>G H I</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('5')}>5
-            <span>J K L</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('6')}>6
-            <span>M N O</span>
-          </button>
+        <div className={styles.keyRow}>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('4')}>4
+              <span>G H I</span>
+          </FloatingActionButton>
+          <FloatingActionButton
+            style={style}
+            onClick={() => this.sendDigit('5')}>5
+              <span>J K L</span>
+          </FloatingActionButton>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('6')}>6
+              <span>M N O</span>
+          </FloatingActionButton>
         </div>
-        <div className="key-row">
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('7')}>7
-            <span>P Q R S</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('8')}>8
-            <span>T U V</span>
-          </button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('9')}>9
-            <span>W X Y Z</span>
-          </button>
+        <div className={styles.keyRow}>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('7')}>7
+              <span>P Q R S</span>
+          </FloatingActionButton>
+          <FloatingActionButton
+            style={style}
+            onClick={() => this.sendDigit('8')}>8
+              <span>T U V</span>
+          </FloatingActionButton>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('9')}>9
+              <span>W X Y Z</span>
+          </FloatingActionButton>
         </div>
-        <div className="key-row">
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('*')}>*</button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('0')}>0</button>
-          <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('#')}>#</button>
+        <div className={styles.keyRow}>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('*')}>*
+          </FloatingActionButton>
+          <FloatingActionButton
+            style={style}
+            onClick={() => this.sendDigit('0')}>0
+          </FloatingActionButton>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('#')}>#
+          </FloatingActionButton>
+        </div>
+        <div className={styles.keyRow}>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('*')}>*
+          </FloatingActionButton>
+          <FloatingActionButton
+            style={style}
+            onClick={() => this.sendDigit('0')}>0
+          </FloatingActionButton>
+          <FloatingActionButton
+            onClick={() => this.sendDigit('#')}>#
+          </FloatingActionButton>
         </div>
       </div>
     );

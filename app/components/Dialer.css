@@ -1,4 +1,17 @@
-.callButtonPosition {
-  margin-top: 15px;
-  margin-left: 60px;
+.centerDialer {
+  width: 256px;
+  margin: 10px auto 20px;
+  text-align: center;
+}
+
+.phoneNumberInput {
+  margin: 20px 0;
+}
+
+.keys {
+  text-align: center;
+}
+
+.keyRow {
+  padding-bottom: 10px;
 }
