@@ -1,6 +1,5 @@
 import React from 'react';
-
-// const Twilio = require('twilio-js');
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 class DTMFTone extends React.Component {
   static propTypes = {
@@ -15,9 +14,16 @@ class DTMFTone extends React.Component {
   }
 
   render() {
+    const style = {
+      marginRight: 20,
+    };
     return (
       <div className="keys">
         <div className="key-row">
+          <FloatingActionButton style={style}>
+            1
+          </FloatingActionButton>
+
           <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('1')}>1</button>
           <button className="btn btn-circle btn-default" onClick={() => this.sendDigit('2')}>2
             <span>A B C</span>

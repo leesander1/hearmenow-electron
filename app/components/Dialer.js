@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NumberInputText from './DialerComponents/NumberInputText';
-import CountrySelectBox from './DialerComponents/CountrySelectBox';
 import LogBox from './DialerComponents/LogBox';
 import CallButton from './DialerComponents/CallButton';
 import MuteButton from './DialerComponents/MuteButton';
@@ -25,20 +24,7 @@ var DialerApp = React.createClass({
       onPhone: false,
       countryCode: '1',
       currentNumber: '',
-      isValidNumber: false,
-      countries: [
-        { name: 'United States', cc: '1', code: 'us' },
-        { name: 'Great Britain', cc: '44', code: 'gb' },
-        { name: 'Colombia', cc: '57', code: 'co' },
-        { name: 'Ecuador', cc: '593', code: 'ec' },
-        { name: 'Estonia', cc: '372', code: 'ee' },
-        { name: 'Germany', cc: '49', code: 'de' },
-        { name: 'Hong Kong', cc: '852', code: 'hk' },
-        { name: 'Ireland', cc: '353', code: 'ie' },
-        { name: 'Singapore', cc: '65', code: 'sg' },
-        { name: 'Spain', cc: '34', code: 'es' },
-        { name: 'Brazil', cc: '55', code: 'br' },
-      ]
+      isValidNumber: false
     };
   },
 
@@ -61,11 +47,6 @@ var DialerApp = React.createClass({
 
   updateLog(text) {
     this.setState({ log: text });
-  },
-
-  // Handle country code selection
-  handleChangeCountryCode(countryCode) {
-    this.setState({ countryCode });
   },
 
   // Handle number input
@@ -102,7 +83,7 @@ var DialerApp = React.createClass({
         onPhone: true
       });
       // make outbound call with current number
-      const n = `+ ${this.state.countryCode + this.state.currentNumber.replace(/\D/g, '')}`;
+      const n = `+1 ${this.state.currentNumber.replace(/\D/g, '')}`;
       // console.log(`Attempting to connect to: ${n}`);
       Twilio.Device.connect({ phoneNumber: n });
       this.setState({ log: `Calling ${n}` });
@@ -124,11 +105,6 @@ var DialerApp = React.createClass({
     return (
       <div id="dialer">
         <div id="dial-form" className="input-group input-group-sm">
-
-          <CountrySelectBox
-            countries={this.state.countries}
-            countryCode={this.state.countryCode}
-            handleOnChange={this.handleChangeCountryCode} />
 
           <NumberInputText
             currentNumber={this.state.currentNumber}

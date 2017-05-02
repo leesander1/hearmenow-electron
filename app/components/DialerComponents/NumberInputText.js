@@ -1,4 +1,5 @@
 import React from 'react';
+import TextField from 'material-ui/TextField';
 
 class NumberInputText extends React.Component {
   static propTypes = {
@@ -8,11 +9,9 @@ class NumberInputText extends React.Component {
 
   render() {
     return (
-      <div className="input-group input-group-sm">
-        <input
-          type="tel"
-          className="form-control"
-          placeholder="555-666-7777"
+      <div className="center-text">
+        <TextField
+          hintText="555-555-7777"
           value={this.props.currentNumber}
           onChange={this.props.handleOnChange} />
       </div>
