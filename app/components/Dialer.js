@@ -119,16 +119,6 @@ var DialerApp = React.createClass({
           disabled={!this.state.isValidNumber}
           onPhone={this.state.onPhone} />
 
-        <div className="controls">
-
-          { this.state.onPhone
-            ? <MuteButton
-              handleOnClick={this.handleToggleMute}
-              muted={this.state.muted} />
-            : null }
-
-        </div>
-
         <LogBox text={this.state.log} />
 
       </div>
