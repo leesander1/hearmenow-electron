@@ -1,4 +1,4 @@
-itHearmenow Electron App
+Hearmenow Electron App
 =======================
 [![dependencies Status](https://david-dm.org/leesander1/hearmenow-electron/status.svg)](https://david-dm.org/leesander1/hearmenow-electron)
 [![Build Status](https://travis-ci.org/leesander1/hearmenow-electron.svg?branch=master)](https://travis-ci.org/leesander1/hearmenow-electron)
