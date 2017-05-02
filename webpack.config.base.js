@@ -37,6 +37,7 @@ export default validate({
   plugins: [],
 
   externals: {
-    twilio:'twilio'
+    twilio:'twilio',
+    notifier: 'node-notifier'
   }
 });

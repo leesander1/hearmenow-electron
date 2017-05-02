@@ -5,7 +5,10 @@ import { Link } from 'react-router';
 import styles from './NetworkStatus.css';
 import FontIcon from 'material-ui/FontIcon';
 import {red500, green500, cyan500, blue500, pinkA200} from 'material-ui/styles/colors';
+import notifier from 'notifier';
 
+
+const nc = new notifier.NotificationCenter();
 
 
 export default class NetworkStatus extends React.Component {
@@ -28,11 +31,23 @@ export default class NetworkStatus extends React.Component {
       this.setState({
         connection: true
       });
+      nc.notify({
+        title: 'You are now Online!',
+        message: 'Hearmenow is now able to initiate or accept calls.',
+        closeLabel: 'Close',
+        wait: true
+      });
       return true
     }
     else{
       this.setState({
         connection: false
+      });
+      nc.notify({
+        title: 'You are now Offline!',
+        message: 'Hearmenow is NOT able to initiate or accept calls while offline.',
+        closeLabel: 'Close',
+        wait: true
       });
       return false
     }
