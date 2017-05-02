@@ -9,3 +9,10 @@
 .searchBar {
   width: 100%!important;
 }
+
+.avatar {
+  height:40px!important;
+  width: 40px!important;
+  border-radius: 50%;
+  margin:0!important;
+}

@@ -47,14 +47,14 @@ export default class NetworkStatus extends React.Component {
   check() {
     const status = this.state.connection;
     if(navigator.onLine) {
-      if(!status){ this.notifyOnline()}
+      if(!status){ this.notifyOnline() }
       this.setState({
         connection: true
       });
       return true
     }
     else{
-      if(status){ this.notifyOffline()}
+      if(status){ this.notifyOffline() }
       this.setState({
         connection: false
       });

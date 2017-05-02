@@ -6,7 +6,7 @@ import NetworkStatus from '../NetworkStatus/NetworkStatus';
 import FontIcon from 'material-ui/FontIcon';
 import { red500, green500, cyan500, blue500, pinkA200 } from 'material-ui/styles/colors';
 
-export default class Footer extends React.Component {
+export default class Footer extends Component {
 
   render() {
     return (
