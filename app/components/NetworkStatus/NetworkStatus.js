@@ -26,34 +26,44 @@ export default class NetworkStatus extends React.Component {
   componentWillUnmount() {
     clearInterval(this.refreshID);
   }
+  notifyOnline() {
+    nc.notify({
+      title: 'You are now Online!',
+      message: 'Hearmenow is now able to initiate or accept calls.',
+      closeLabel: 'Close',
+      wait: true
+    });
+    console.log("Online");
+  }
+  notifyOffline() {
+    nc.notify({
+      title: 'You are now Offline!',
+      message: 'Hearmenow is NOT able to initiate or accept calls while offline.',
+      closeLabel: 'Close',
+      wait: true
+    });
+    console.log("Offline");
+  }
   check() {
+    const status = this.state.connection;
     if(navigator.onLine) {
+      if(!status){ this.notifyOnline()}
       this.setState({
         connection: true
-      });
-      nc.notify({
-        title: 'You are now Online!',
-        message: 'Hearmenow is now able to initiate or accept calls.',
-        closeLabel: 'Close',
-        wait: true
       });
       return true
     }
     else{
+      if(status){ this.notifyOffline()}
       this.setState({
         connection: false
       });
-      nc.notify({
-        title: 'You are now Offline!',
-        message: 'Hearmenow is NOT able to initiate or accept calls while offline.',
-        closeLabel: 'Close',
-        wait: true
-      });
-      return false
     }
-
   }
 
+  trigger () {
+    var x = this.state.connection ? nofityOnline() : notiftyOffline();
+  }
   render() {
     var input = this.state.connection ? <FontIcon className="material-icons" style={styles.icon} color={green500}>adjust</FontIcon> : <FontIcon className="material-icons" style={styles.icon} color={red500}>adjust</FontIcon>;
     return (
