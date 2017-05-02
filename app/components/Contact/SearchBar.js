@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
+import TextField from 'material-ui/TextField';
 import styles from './Contact.css';
-import {Textfield} from 'react-mdl';
 
-
-export default class SearchBar extends Component{
-  render(){
-    return(
-      <Textfield
-        label="Search"
-        className={styles.searchBar}
-      />
+export default class SearchBar extends Component {
+  render() {
+    return (
+      <TextField
+        hintText="Search"
+        className={styles.searchBar} />
     );
   }
 }

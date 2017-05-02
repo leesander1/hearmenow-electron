@@ -104,11 +104,9 @@ var DialerApp = React.createClass({
     return (
       <div id="dialer">
         <div id="dial-form" className="input-group input-group-sm">
-
           <NumberInputText
             currentNumber={this.state.currentNumber}
             handleOnChange={this.handleChangeNumber} />
-
         </div>
 
         <DTMFTone
