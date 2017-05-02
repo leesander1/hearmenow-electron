@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router';
 import styles from './Home.css';
 
+import notifier from 'notifier';
+const nc = new notifier.NotificationCenter();
+
+
 export default class Home extends Component {
   render() {
     return (
@@ -32,6 +36,26 @@ Twilio.Device.ready(() => {
   //console.log('Its ready');
 });
 
+Twilio.Device.incoming((connection) => {
+  // send a system notification
+  nc.notify({
+    title: 'Incoming Call from ' + connection.parameters.From,
+    message: 'Would you like to:',
+    closeLabel: 'Decline',
+    actions: 'Accept',
+    wait: true
+  }, function(err, response, metadata) {
+    if(response == 'activate'){
+      connection.accept();
+    }else if (response == 'closed') {
+      connection.ignore();
+    }
+  });
+  // call back for when a call is accepted
+  connection.accept(() => {
+    console.log('In a call');
+  });
+});
 
 function sendCall() {
   var phone = {"phoneNumber": "8067895172"};
