@@ -9,7 +9,7 @@ class LogBox extends React.Component {
   render() {
     return (
       <div>
-        <div className="log">{this.props.text}</div>
+        <div className="log center-text">{this.props.text}</div>
         <p>{this.props.smallText}</p>
       </div>
     );

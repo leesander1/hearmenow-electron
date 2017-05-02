@@ -18,7 +18,7 @@ class CallButton extends React.Component {
           backgroundColor={`${(this.props.onPhone ? red500 : green500)}`}
           onClick={this.props.handleOnClick}
           disabled={this.props.disabled}>
-          <FontIcon name="call" className="material-icons">phone</FontIcon>
+          <FontIcon name="call" className={`material-icons ${styles.phoneIcon}`}>phone</FontIcon>
         </FloatingActionButton>
       </div>
     );

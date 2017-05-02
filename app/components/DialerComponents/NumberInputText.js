@@ -13,6 +13,7 @@ class NumberInputText extends React.Component {
       <div className={`center-text ${styles.phoneNumberInput}`}>
         <TextField
           hintText="555-555-7777"
+          type="tel"
           value={this.props.currentNumber}
           onChange={this.props.handleOnChange} />
       </div>

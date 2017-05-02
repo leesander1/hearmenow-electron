@@ -17,76 +17,112 @@ class DTMFTone extends React.Component {
   render() {
     const style = {
       marginLeft: 20,
-      marginRight: 20,
+      marginRight: 20
     };
     return (
       <div className={styles.keys}>
         <div className={styles.keyRow}>
           <FloatingActionButton
-            onClick={() => this.sendDigit('1')}>1
+            onClick={() => this.sendDigit('1')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumberEmpty}>1</span>
+            </div>
           </FloatingActionButton>
           <FloatingActionButton
             style={style}
-            onClick={() => this.sendDigit('2')}>2
-              <span>A B C</span>
+            onClick={() => this.sendDigit('2')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumber}>2</span>
+              <span className={styles.dialText}>A B C</span>
+            </div>
           </FloatingActionButton>
           <FloatingActionButton
-            onClick={() => this.sendDigit('3')}>3
-              <span>D E F</span>
+            onClick={() => this.sendDigit('3')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumber}>3</span>
+              <span className={styles.dialText}>D E F</span>
+            </div>
           </FloatingActionButton>
         </div>
         <div className={styles.keyRow}>
           <FloatingActionButton
-            onClick={() => this.sendDigit('4')}>4
-              <span>G H I</span>
+            onClick={() => this.sendDigit('4')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumber}>4</span>
+              <span className={styles.dialText}>G H I</span>
+            </div>
           </FloatingActionButton>
           <FloatingActionButton
             style={style}
-            onClick={() => this.sendDigit('5')}>5
-              <span>J K L</span>
+            onClick={() => this.sendDigit('5')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumber}>5</span>
+              <span className={styles.dialText}>J K L</span>
+            </div>
           </FloatingActionButton>
           <FloatingActionButton
-            onClick={() => this.sendDigit('6')}>6
-              <span>M N O</span>
+            onClick={() => this.sendDigit('6')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumber}>6</span>
+              <span className={styles.dialText}>M N O</span>
+            </div>
           </FloatingActionButton>
         </div>
         <div className={styles.keyRow}>
           <FloatingActionButton
-            onClick={() => this.sendDigit('7')}>7
-              <span>P Q R S</span>
+            onClick={() => this.sendDigit('7')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumber}>7</span>
+              <span className={styles.dialText}>P Q R S</span>
+            </div>
           </FloatingActionButton>
           <FloatingActionButton
             style={style}
-            onClick={() => this.sendDigit('8')}>8
-              <span>T U V</span>
+            onClick={() => this.sendDigit('8')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumber}>8</span>
+              <span className={styles.dialText}>T U V</span>
+            </div>
           </FloatingActionButton>
           <FloatingActionButton
-            onClick={() => this.sendDigit('9')}>9
-              <span>W X Y Z</span>
+            onClick={() => this.sendDigit('9')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumber}>8</span>
+              <span className={styles.dialText}>W X Y Z</span>
+            </div>
           </FloatingActionButton>
         </div>
         <div className={styles.keyRow}>
           <FloatingActionButton
-            onClick={() => this.sendDigit('*')}>*
+            onClick={() => this.sendDigit('*')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumberEmpty}>*</span>
+            </div>
           </FloatingActionButton>
           <FloatingActionButton
             style={style}
-            onClick={() => this.sendDigit('0')}>0
+            onClick={() => this.sendDigit('0')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumberEmpty}>0</span>
+            </div>
           </FloatingActionButton>
           <FloatingActionButton
-            onClick={() => this.sendDigit('#')}>#
-          </FloatingActionButton>
-        </div>
-        <div className={styles.keyRow}>
-          <FloatingActionButton
-            onClick={() => this.sendDigit('*')}>*
-          </FloatingActionButton>
-          <FloatingActionButton
-            style={style}
-            onClick={() => this.sendDigit('0')}>0
-          </FloatingActionButton>
-          <FloatingActionButton
-            onClick={() => this.sendDigit('#')}>#
+            onClick={() => this.sendDigit('#')}
+            className={styles.floatingDialerButton}>
+            <div>
+              <span className={styles.dialerNumberEmpty}>#</span>
+            </div>
           </FloatingActionButton>
         </div>
       </div>
