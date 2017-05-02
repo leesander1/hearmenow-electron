@@ -23,7 +23,10 @@
     "react/jsx-no-bind": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": "off",
-    "flowtype-errors/show-errors": 2
+    "react/jsx-closing-bracket-location": "off",
+    "react/require-default-props": "off",
+    "no-undef": "off",
+    "flowtype-errors/show-errors": 2,
   },
   "plugins": [
     "flowtype",

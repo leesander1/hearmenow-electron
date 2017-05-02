@@ -1,17 +1,14 @@
-// @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import styles from './NavBar.css';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 
-
-
 export default class NavBar extends Component {
 
   constructor(props) {
-    super(props)
-    this.state = { active: 0 }
+    super(props);
+    this.state = { active: 0 };
   }
 
   render() {

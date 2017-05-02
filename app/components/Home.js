@@ -1,8 +1,6 @@
-// @flow
 import React, { Component } from 'react';
 // import { Link } from 'react-router';
 import styles from './Home.css';
-
 
 export default class Home extends Component {
   render() {
@@ -16,6 +14,7 @@ export default class Home extends Component {
     );
   }
 }
+
 var twilio_token = {};
 
 async function getToken() {
@@ -30,12 +29,12 @@ async function getToken() {
 }
 
 Twilio.Device.ready(() => {
-  console.log('Its ready');
+  //console.log('Its ready');
 });
 
 
 function sendCall() {
-  var phone = {"phoneNumber": "4698773526"};
+  var phone = {"phoneNumber": "8067895172"};
   Twilio.Device.connect(phone);
   console.log(twilio_token);
 }

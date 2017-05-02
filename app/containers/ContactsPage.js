@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import Contact from '../components/Contact/Contact';
 import SearchBar from '../components/Contact/SearchBar';
