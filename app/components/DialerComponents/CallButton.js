@@ -1,7 +1,8 @@
 import React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from 'material-ui/FontIcon';
-import {red500, green500} from 'material-ui/styles/colors';
+import { red500, green500 } from 'material-ui/styles/colors';
+import styles from '../Dialer.css';
 
 class CallButton extends React.Component {
   static propTypes = {
@@ -12,18 +13,13 @@ class CallButton extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.callButtonPosition}>
         <FloatingActionButton
           backgroundColor={`${(this.props.onPhone ? red500 : green500)}`}
           onClick={this.props.handleOnClick}
           disabled={this.props.disabled}>
           <FontIcon name="call" className="material-icons">phone</FontIcon>
         </FloatingActionButton>
-        <button
-          className={`btn btnCircle btn-success ${(this.props.onPhone ? 'btn-danger' : 'btn-success')}`}
-          >
-          <i className={`fa fa-fw fa-phone ${(this.props.onPhone ? 'fa-close' : 'fa-phone')}`} />
-        </button>
       </div>
     );
   }
