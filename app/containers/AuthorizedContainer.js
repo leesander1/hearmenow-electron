@@ -13,8 +13,6 @@ class AuthorizedContainer extends React.Component {
   constructor(props){
     super(props);
     if(!this.props.authenticated){
-      console.log('Hey the you are not authorized!');
-      browserHistory.push('login');
     }
   }
 
@@ -26,7 +24,7 @@ class AuthorizedContainer extends React.Component {
       // then redirect (we use a React Router method)
       //dispatch(navigateTo(currentURL))
       console.log('Yo yo, not logged in');
-      browserHistory.push('login');
+      this.props.history.push('/login');
     }
   }
 

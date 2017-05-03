@@ -25,8 +25,6 @@ class App extends Component {
     } else {
       // do any kind of cleanup or post-logout redirection here
       console.log('Nope, not authenticated');
-      dispatch(logoutUser());
-      //browserHistory.replace('login');
     }
   }
   render() {

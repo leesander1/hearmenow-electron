@@ -1,11 +1,29 @@
 // @flow
 import React, { Component } from 'react';
 import Home from '../components/Home/Home';
+import { connnect } from 'react-redux';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
   render() {
     return (
-      <Home />
+      <div>
+        <Home />
+      </div>
+      <div>
+        <button onClick={logout}>Log me out!</button>
+      </div>
     );
   }
 }
+
+function logout() {
+
+}
+
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth.authenticated
+  }
+}
+
+export default connect(mapStateToProps)(HomePage);
