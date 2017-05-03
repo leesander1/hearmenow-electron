@@ -24,7 +24,7 @@ class AuthorizedContainer extends React.Component {
       // then redirect (we use a React Router method)
       //dispatch(navigateTo(currentURL))
       console.log('Yo yo, not logged in');
-      this.props.history.push('/login');
+      browserHistory.push('/login');
     }
   }
 

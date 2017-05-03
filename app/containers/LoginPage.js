@@ -8,9 +8,11 @@ import { loginUser } from '../actions/index';
 class LoginPage extends Component {
   render() {
     return (
-      <p>This be the login page</p>
-      <button onClick={logout}>Log me out!</button>
-      <button onClick={login}>Log me In!</button>
+      <div>
+        <p>This be the login page</p>
+        <button onClick={logout}>Log me out!</button>
+        <button onClick={login}>Log me In!</button>
+      </div>
     );
   }
 }
@@ -21,7 +23,7 @@ function logout() {
 
 function login() {
   this.props.history.push('/Home');
-  this.props.loginUser({"test@test.com", "Test123!"});
+  this.props.loginUser({email:'test@test.com', password:'Test123!'});
 }
 
 function mapStateToProps(state) {
