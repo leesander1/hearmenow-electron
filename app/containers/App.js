@@ -6,7 +6,7 @@ import NavBar from '../components/NavBar/NavBar';
 import Footer from '../components/Footer/Footer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { loginUser } from '../actions';
+import { loginUser, logoutUser } from '../actions';
 import { browserHistory } from 'react-router';
 
 injectTapEventPlugin();
@@ -17,7 +17,7 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { dispatch, redirectUrl } = this.props;
+    const { dispatch, redirectUrl, currentURL } = this.props;
     const authenticated = this.props.authenticated;
 
     if (authenticated) {
@@ -25,7 +25,8 @@ class App extends Component {
     } else {
       // do any kind of cleanup or post-logout redirection here
       console.log('Nope, not authenticated');
-      browserHistory.push('/login');
+      dispatch(logoutUser());
+      //browserHistory.replace('login');
     }
   }
   render() {

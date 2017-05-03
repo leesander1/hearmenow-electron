@@ -19,6 +19,6 @@ export default (
         <Route path="contacts" component={ContactsPage} />
         <Route path="settings" component={SettingsPage} />
       </Route>
-    </Route>  
+    </Route>
   </Router>
 );
