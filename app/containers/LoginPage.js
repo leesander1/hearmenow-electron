@@ -5,23 +5,30 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'Redux';
 import { loginUser } from '../actions/index';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 
 class LoginPage extends Component {
-  static contextTypes = {
-    router: PropTypes.object
+  constructor(props) {
+    super(props);
+
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   componentWillUpdate(nextProps) {
     if (nextProps.authenticated){
-      this.context.router.push('/dashboard');
+      this.props.router.replace('/dashboard/home');
     }
+  }
+
+  clickHandler() {
+    this.props.loginUser({email: "", password: ""});
   }
 
   render() {
     return (
       <div>
         <p>This be the login page</p>
-        <button onClick={() => this.props.loginUser({email: "", password: ""})}>Log me In!</button>
+        <button onClick={this.clickHandler}>Log me In!</button>
       </div>
     );
   }

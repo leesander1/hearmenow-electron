@@ -19,7 +19,9 @@ class App extends Component {
 
   render() {
     return (
-      <LoginPage />
+      <div>
+        {this.props.children}
+      </div>
     );
   }
 }
