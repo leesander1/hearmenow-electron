@@ -6,6 +6,10 @@ import { bindActionCreators } from 'Redux';
 import { loginUser } from '../actions/index';
 
 class LoginPage extends Component {
+  constructor(props){
+    super(props);
+  }
+
   render() {
     return (
       <div>
@@ -22,8 +26,9 @@ function logout() {
 }
 
 function login() {
-  this.props.history.push('/Home');
-  this.props.loginUser({email:'test@test.com', password:'Test123!'});
+  //this.props.history.push('/Home');
+  //this.props.loginUser({email:'test@test.com', password:'Test123!'});
+  console.log(this.props);
 }
 
 function mapStateToProps(state) {

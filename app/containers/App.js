@@ -24,7 +24,7 @@ class App extends Component {
       dispatch(navigateTo(redirectUrl))
     } else {
       // do any kind of cleanup or post-logout redirection here
-      console.log('Nope, not authenticated');
+      this.props.router.push('/login');
     }
   }
   render() {
