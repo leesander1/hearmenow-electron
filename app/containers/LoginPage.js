@@ -4,31 +4,27 @@ import Login from '../components/Login/Login';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'Redux';
 import { loginUser } from '../actions/index';
+import PropTypes from 'prop-types';
 
 class LoginPage extends Component {
-  constructor(props){
-    super(props);
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
+  componentWillUpdate(nextProps) {
+    if (nextProps.authenticated){
+      this.context.router.push('/dashboard');
+    }
   }
 
   render() {
     return (
       <div>
         <p>This be the login page</p>
-        <button onClick={logout}>Log me out!</button>
-        <button onClick={login}>Log me In!</button>
+        <button onClick={() => this.props.loginUser({email: "", password: ""})}>Log me In!</button>
       </div>
     );
   }
-}
-
-function logout() {
-  // really doesn't need to do anything since you are already on the login page
-}
-
-function login() {
-  //this.props.history.push('/Home');
-  //this.props.loginUser({email:'test@test.com', password:'Test123!'});
-  console.log(this.props);
 }
 
 function mapStateToProps(state) {
@@ -41,7 +37,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   // the first param is an obj where the key will end up being a prop for this container
   // the second param is the action that will be created
-  return bindActionCreators({authenticated: loginUser}, dispatch);
+  return bindActionCreators({loginUser: loginUser}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

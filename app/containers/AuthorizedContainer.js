@@ -6,21 +6,16 @@ import { connect, dispatch, navigateTo } from 'react-redux';
 import { browserHistory } from 'react-router';
 
 class AuthorizedContainer extends React.Component {
-  static contextTypes = {
-    router: React.PropTypes.object
-  }
-
-  constructor(props){
-    super(props);
-  }
-
   componentDidMount() {
     const { dispatch, currentURL } = this.props
 
     if (!this.props.authenticated) {
       // set the current url/path for future redirection (we use a Redux action)
       // then redirect (we use a React Router method)
-      this.props.router.push('/login');
+      console.log('Not authenticated');
+    }
+    else{
+      console.log('Hey you where authenticated');
     }
   }
 
