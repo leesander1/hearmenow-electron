@@ -4,10 +4,10 @@ import { connect, dispatch, navigateTo } from 'react-redux';
 import { browserHistory } from 'react-router';
 // NEED COMPONENT FOR ERROR HANDLING
 
-export function loginUser({email, password}) {
+export function loginUser(payload) {
   return {
     type: AUTH_USER,
-    payload: {}
+    payload: payload
   }
 }
 
