@@ -16,3 +16,9 @@
   border-radius: 50%;
   margin:0!important;
 }
+
+.button{
+  position: absolute;
+  right: 4;
+  top: 12;
+}
