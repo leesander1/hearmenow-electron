@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')(); // eslint-disable-line global-require
   const path = require('path'); // eslint-disable-line
-  const p = path.join(__dirname, '..', 'app', 'node_modules'); // eslint-disable-line
+  const p = path.join(__dirname, '..', 'app', 'node_modules', 'resources/icon.png'); // eslint-disable-line
   require('module').globalPaths.push(p); // eslint-disable-line
 }
 
@@ -43,13 +43,14 @@ const installExtensions = async () => {
 
 app.on('ready', async () => {
   await installExtensions();
-
+  const path = require('path');
   mainWindow = new BrowserWindow({
     show: false,
     width: 375,
     height: 667,
     resizable: false,
-    skipTaskbar: true
+    skipTaskbar: true,
+    icon: path.join(__dirname, 'resources/icon.png')
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);

@@ -1,14 +1,54 @@
-.container {
-  position: absolute;
-  top: 30%;
-  left: 10px;
+.centerDialer {
+  width: 256px;
+  margin: 10px auto 20px;
   text-align: center;
 }
 
-.container h2 {
-  font-size: 5rem;
+.phoneNumberInput {
+  margin: 20px 0;
 }
 
-.container a {
-  font-size: 1.4rem;
+.phoneIcon {
+  font-size: 28px!important;
+  line-height: 65px!important;
+}
+
+.keys {
+  text-align: center;
+}
+
+.keyRow {
+  padding-bottom: 10px;
+}
+
+.keyText {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+}
+
+button, button > div, button > div > div {
+  height: 65px!important;
+  width: 65px!important;
+}
+
+button > div > div > div {
+  line-height: initial!important;
+}
+
+.dialerNumber {
+  line-height: initial;
+  position: relative;
+  top: 14px;
+}
+.dialerNumberEmpty{
+  line-height: initial;
+  position: relative;
+  top: 22px;
+}
+.dialText {
+  display: block;
+  position: relative;
+  top: 14px;
 }
