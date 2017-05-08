@@ -1,0 +1,125 @@
+
+.Footer__footer___3vblH {
+  position: fixed;
+  bottom: 0px;
+  /*background-color: rgba(0, 188, 212, 1.0);*/
+  background-color: #EEEEEE;
+  width: 100%;
+  height: 24px;
+  padding-top:2px;
+  padding-bottom:2px;
+}
+
+.Footer__footerContent___G6kKP {
+  display: inline-flex;
+  height:inherit;
+  vertical-align: middle;
+  /*align-items: center;*/
+  justify-content: center;
+  float:right;
+  padding-right: 5px;
+  margin:auto;
+}
+
+.Footer__footerText___XDh4C {
+  font-size:16px;
+}
+.Home__container___Z1-ob {
+  position: absolute;
+  top: 30%;
+  left: 10px;
+  text-align: center;
+}
+
+.Home__container___Z1-ob h2 {
+  font-size: 5rem;
+}
+
+.Home__container___Z1-ob a {
+  font-size: 1.4rem;
+}
+.Dialer__centerDialer___pIVJp {
+  width: 256px;
+  margin: 10px auto 20px;
+  text-align: center;
+}
+
+.Dialer__phoneNumberInput___xECTq {
+  margin: 20px 0;
+}
+
+.Dialer__phoneIcon___3Fczl {
+  font-size: 28px!important;
+  line-height: 65px!important;
+}
+
+.Dialer__keys___2HzNE {
+  text-align: center;
+}
+
+.Dialer__keyRow___1oJCz {
+  padding-bottom: 10px;
+}
+
+.Dialer__keyText___e4yTC {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+}
+
+button, button > div, button > div > div {
+  height: 65px!important;
+  width: 65px!important;
+}
+
+button > div > div > div {
+  line-height: initial!important;
+}
+
+.Dialer__dialerNumber___BtjQV {
+  line-height: initial;
+  position: relative;
+  top: 14px;
+}
+.Dialer__dialerNumberEmpty___109U-{
+  line-height: initial;
+  position: relative;
+  top: 22px;
+}
+.Dialer__dialText___1-Fzc {
+  display: block;
+  position: relative;
+  top: 14px;
+}
+.Contact__contanctTile___jd_B3 {
+  border-bottom-style: groove;
+}
+
+.Contact__phone___18dIx {
+  color: #4CAF50;
+}
+
+.Contact__searchBar___16n2f {
+  width: 100%!important;
+}
+.center-text {
+  text-align: center;
+}
+
+.container {
+  position: absolute;
+  top: 30%;
+  left: 10px;
+  text-align: center;
+}
+
+.container h2 {
+  font-size: 5rem;
+}
+
+.container a {
+  font-size: 1.4rem;
+}
+
+/*# sourceMappingURL=style.css.map*/
