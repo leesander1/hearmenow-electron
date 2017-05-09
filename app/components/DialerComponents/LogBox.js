@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LogBox extends Component {
   static propTypes = {
-    text: React.PropTypes.string.isRequired,
-    smallText: React.PropTypes.string,
+    text: PropTypes.string,
+    smallText: PropTypes.string
   }
 
   render() {

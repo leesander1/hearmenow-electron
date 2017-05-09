@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import Avatar from 'material-ui/Avatar';
 import { ListItem } from 'material-ui/List';
@@ -17,12 +18,16 @@ const KEYS_TO_FILTERS = ['firstName', 'lastName', 'number', 'id'];
 
 export default class ContactDisplay extends Component {
 
+  static propTypes = {
+    searchTerm: PropTypes.string,
+  }
+
   pressCall(number) {
     console.log(this.number);
   }
 
   render() {
-    const filteredContacts = contacts.filter(createFilter(this.props.searchTerm, KEYS_TO_FILTERS))
+    const filteredContacts = contacts.filter(createFilter(this.props.searchTerm, KEYS_TO_FILTERS));
 
     return (
       <div>
