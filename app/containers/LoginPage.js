@@ -10,9 +10,9 @@ import { TextField, RaisedButton } from 'material-ui';
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {email: '', password: ''};
 
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -23,20 +23,40 @@ class LoginPage extends Component {
   }
 
   handleChange(event) {
-    let newState = {};
-
-    console.log(event);
+    const target = event.target;
+    const name = target.name;
+    this.setState({
+      [name]:target.value
+    });
+    console.log(name + " : " + target.value);
   }
 
   handleSubmit(event) {
-    console.log(this.email);
     event.preventDefault();
-    fetch('https://serene-island-28717.herokuapp.com/login', {
+    console.log(this.state.email);
+    console.log(this.state.password);
+    const url = 'https://serene-island-28717.herokuapp.com/login';
+
+    let data = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    let myHeaders = new Headers({
+      "Content-Type" : "application/json"
+    })
+
+    let fetchData = {
       method: 'POST',
-      body: {}
-    }).then(response => {
+      body: JSON.stringify(data),
+      headers: myHeaders
+    }
+    console.log(data);
+
+    fetch(url, fetchData)
+    .then(response => {
       if (response.status == 200) {
         // action creator
+        console.log("success");
         console.log('response', response);
       }
       else {
@@ -44,16 +64,17 @@ class LoginPage extends Component {
         console.log('response', response);
       }
     });
+
   }
 
   render() {
     return (
       <div>
       <p>This be the login page</p>
-      <form id="LoginForm" onSubmit={this.handleSubmit}>
-       <TextField hintText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
-       <TextField hintText="Password" id="password" name="password" value={this.state.password} onChange={this.handleChange}/>
-       <RaisedButton label="Login" primary={true} value="Submit" type="submit" />
+      <form id="login" onSubmit={this.handleSubmit} >
+       <TextField  type="text" floatingLabelText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange.bind(this)}/>
+       <TextField floatingLabelText="Password" id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
+       <RaisedButton label="Login" primary={true} type="submit" />
       </form>
       </div>
     );
