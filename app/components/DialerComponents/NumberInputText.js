@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import styles from '../Dialer.css';
 
-class NumberInputText extends React.Component {
+class NumberInputText extends Component {
   static propTypes = {
     currentNumber: React.PropTypes.string.isRequired,
     handleOnChange: React.PropTypes.func.isRequired,

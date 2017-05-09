@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from 'material-ui/FontIcon';
 import { red500, green500 } from 'material-ui/styles/colors';
 import styles from '../Dialer.css';
 
-class CallButton extends React.Component {
+class CallButton extends Component {
   static propTypes = {
     onPhone: React.PropTypes.bool.isRequired,
     handleOnClick: React.PropTypes.func.isRequired,

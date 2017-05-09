@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 // import { Link } from 'react-router';
 import { ListItem } from 'material-ui/List';
@@ -10,23 +9,16 @@ import SearchBar from './Contact/SearchBar';
 import ContactList from './Contact/ContactList';
 
 export default class Contact extends Component {
-  render() {
-    return (
-      <div>
-        <ContactApp />
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ''
+    };
   }
-}
-
-export const ContactApp = React.createClass({
-  getInitialState() {
-    return { value: '' };
-  },
 
   handleSearchInput(value) {
     this.setState({ value });
-  },
+  }
 
   render() {
     return (
@@ -38,4 +30,4 @@ export const ContactApp = React.createClass({
       </div>
     );
   }
-});
+}
