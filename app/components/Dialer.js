@@ -16,6 +16,7 @@ export default class Dialer extends Component {
 }
 
 var DialerApp = React.createClass({
+
   getInitialState() {
     return {
       muted: false,
