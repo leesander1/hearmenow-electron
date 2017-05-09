@@ -41,6 +41,7 @@ class LoginPage extends Component {
       email: this.state.email,
       password: this.state.password
     }
+
     let myHeaders = new Headers({
       "Content-Type" : "application/json"
     })
@@ -50,17 +51,21 @@ class LoginPage extends Component {
       body: JSON.stringify(data),
       headers: myHeaders
     }
-    console.log(data);
 
     fetch(url, fetchData)
     .then(response => {
       if (response.status == 200) {
         // action creator
-        console.log("success");
-        console.log('response', response);
+
+        response.json().then(data => {
+          //console.log(data);
+          this.props.loginUser(data);
+        })
+        //console.log('response', response);
       }
       else {
         // action creator
+        // TODO: Handle errors and notify user
         console.log('response', response);
       }
     });
