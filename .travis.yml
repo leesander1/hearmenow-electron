@@ -4,11 +4,13 @@ language: node_js
 
 node_js:
   - 7
-  - 6
 
 cache:
   directories:
     - node_modules
+
+notifications:
+  email: false
 
 #
 # cache:
@@ -47,7 +49,6 @@ before_script:
   - sleep 3
 
 script:
-  # - npm run lint
   # - npm run test TODO: Add test cases
   - npm run build
   # - npm run test-e2e TODO: Add test cases
