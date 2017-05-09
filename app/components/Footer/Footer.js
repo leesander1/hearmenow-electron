@@ -29,28 +29,28 @@ export default class Footer extends Component {
     Twilio.Device.ready(() => {
       // need to do something here
     });
-  }
 
-  Twilio.Device.incoming((connection) => {
-    // send a system notification
-    nc.notify({
-      title: 'Incoming Call from ' + connection.parameters.From,
-      message: 'Would you like to:',
-      closeLabel: 'Decline',
-      actions: 'Accept',
-      wait: true
-    }, function(err, response, metadata) {
-      if(response == 'activate'){
-        connection.accept();
-      }else if (response == 'closed') {
-        connection.ignore();
-      }
+    Twilio.Device.incoming((connection) => {
+      // send a system notification
+      nc.notify({
+        title: 'Incoming Call from ' + connection.parameters.From,
+        message: 'Would you like to:',
+        closeLabel: 'Decline',
+        actions: 'Accept',
+        wait: true
+      }, function(err, response, metadata) {
+        if(response == 'activate'){
+          connection.accept();
+        }else if (response == 'closed') {
+          connection.ignore();
+        }
+      });
+      // call back for when a call is accepted
+      connection.accept(() => {
+        this.handleAcceptedCall();
+      });
     });
-    // call back for when a call is accepted
-    connection.accept(() => {
-      this.handleAcceptedCall();
-    });
-  });
+  }
 
   handleAcceptedCall() {
     this.router.push('/dashboard/dialer');

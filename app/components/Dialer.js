@@ -19,23 +19,6 @@ export default class Dialer extends Component {
     };
   }
 
-  async componentDidMount() {
-    // console.log('Component Mounted');
-    const request = await fetch('https://serene-island-28717.herokuapp.com/api/generateToken', {
-      method: 'POST'
-    });
-
-    // console.log(request);
-    const twilioToken = await request.json();
-    // console.log(twilioToken.token);
-    Twilio.Device.setup(twilioToken.token);
-
-    Twilio.Device.ready(() => {
-      this.updateLog('It\'s Ready');
-    });
-    // console.log(twilioToken);
-  }
-
   updateLog(text) {
     this.setState({ log: text });
   }

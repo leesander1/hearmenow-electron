@@ -37,7 +37,7 @@ Twilio.Device.ready(() => {
 });
 
 function sendCall() {
-  var phone = {"phoneNumber": "8067895172"};
+  var phone = {"phoneNumber": "4323498373"};
   Twilio.Device.connect(phone);
   console.log(twilio_token);
 }
