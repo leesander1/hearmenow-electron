@@ -30,8 +30,8 @@ class LoginPage extends Component {
       <p>This be the login page</p>
       <form id="LoginForm" action='https://serene-island-28717.herokuapp.com/login'
       method="POST" onSubmit={this.handleSubmit}>
-       <TextField hintText="Email" value={this.email}/>
-       <TextField hintText="Password" value={this.password}/>
+       <TextField hintText="Email" id="email" name="email"/>
+       <TextField hintText="Password" id="password" name="password"/>
        <RaisedButton label="Login" primary={true} type="submit" value="submit"/>
       </form>
       </div>
