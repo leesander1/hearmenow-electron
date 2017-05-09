@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import styles from '../Dialer.css';
 
-class DTMFTone extends React.Component {
+class DTMFTone extends Component {
   static propTypes = {
-    handleOnChange: React.PropTypes.func.isRequired,
+    handleOnChange: PropTypes.func,
   }
 
   // Handle numeric buttons

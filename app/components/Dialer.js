@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import NumberInputText from './DialerComponents/NumberInputText';
 import LogBox from './DialerComponents/LogBox';
 import CallButton from './DialerComponents/CallButton';
-import MuteButton from './DialerComponents/MuteButton';
 import DTMFTone from './DialerComponents/DTMFTone';
 
 export default class Dialer extends Component {
-  render() {
-    return (
-      <div>
-        <DialerApp />
-      </div>
-    );
-  }
-}
 
-var DialerApp = React.createClass({
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       muted: false,
       log: 'Connecting...',
       onPhone: false,
@@ -25,7 +17,7 @@ var DialerApp = React.createClass({
       currentNumber: '',
       isValidNumber: false
     };
-  },
+  }
 
   async componentDidMount() {
     // console.log('Component Mounted');
@@ -42,11 +34,11 @@ var DialerApp = React.createClass({
       this.updateLog('It\'s Ready');
     });
     // console.log(twilioToken);
-  },
+  }
 
   updateLog(text) {
     this.setState({ log: text });
-  },
+  }
 
   // Handle number input
   handleChangeNumber(e) {
@@ -54,7 +46,7 @@ var DialerApp = React.createClass({
       currentNumber: e.target.value,
       isValidNumber: /^([0-9]|#|\*)+$/.test(e.target.value.replace(/[-()\s]/g, ''))
     });
-  },
+  }
 
   // Handle Dialer Input
   handleDialerInput(n) {
@@ -63,7 +55,7 @@ var DialerApp = React.createClass({
       currentNumber: dial,
       isValidNumber: /^([0-9]|#|\*)+$/.test(dial.replace(/[-()\s]/g, ''))
     });
-  },
+  }
 
   // Handle muting
   handleToggleMute() {
@@ -71,7 +63,7 @@ var DialerApp = React.createClass({
 
     this.setState({ muted });
     Twilio.Device.activeConnection().mute(muted);
-  },
+  }
 
   // Make an outbound call with the current number,
   // or hang up the current call
@@ -98,7 +90,7 @@ var DialerApp = React.createClass({
         log: 'Ended Call Successfully'
       });
     }
-  },
+  }
 
   render() {
     return (
@@ -122,4 +114,4 @@ var DialerApp = React.createClass({
       </div>
     );
   }
-});
+}
