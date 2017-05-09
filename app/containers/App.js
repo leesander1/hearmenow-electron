@@ -21,7 +21,7 @@ export default class App extends Component {
             <div className="content">
               {this.props.children}
             </div>
-            <Footer />
+            <Footer router={this.router}/>
           </div>
         </MuiThemeProvider>
       </div>

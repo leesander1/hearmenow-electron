@@ -28,6 +28,7 @@ export default class Footer extends Component {
 
     Twilio.Device.ready(() => {
       // need to do something here
+      console.log(this.props.router);
     });
 
     Twilio.Device.incoming((connection) => {
@@ -40,20 +41,16 @@ export default class Footer extends Component {
         wait: true
       }, function(err, response, metadata) {
         if(response == 'activate'){
-          connection.accept();
+          this.handleAcceptedCall(connection);
         }else if (response == 'closed') {
-          connection.ignore();
+          this.handleAcceptedCall(connection);
         }
-      });
-      // call back for when a call is accepted
-      connection.accept(() => {
-        this.handleAcceptedCall();
       });
     });
   }
 
-  handleAcceptedCall() {
-    this.router.push('/dashboard/dialer');
+  handleAcceptedCall(connection) {
+    this.router.push('dialer', connection);
   }
 
   render() {
