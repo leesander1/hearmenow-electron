@@ -36,27 +36,6 @@ Twilio.Device.ready(() => {
   //console.log('Its ready');
 });
 
-Twilio.Device.incoming((connection) => {
-  // send a system notification
-  nc.notify({
-    title: 'Incoming Call from ' + connection.parameters.From,
-    message: 'Would you like to:',
-    closeLabel: 'Decline',
-    actions: 'Accept',
-    wait: true
-  }, function(err, response, metadata) {
-    if(response == 'activate'){
-      connection.accept();
-    }else if (response == 'closed') {
-      connection.ignore();
-    }
-  });
-  // call back for when a call is accepted
-  connection.accept(() => {
-    console.log('In a call');
-  });
-});
-
 function sendCall() {
   var phone = {"phoneNumber": "8067895172"};
   Twilio.Device.connect(phone);
