@@ -11,6 +11,8 @@ class LoginPage extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {email: '', password: ''};
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,19 +22,38 @@ class LoginPage extends Component {
     }
   }
 
-  handleSubmit() {
-    // need to call action creator here
+  handleChange(event) {
+    let newState = {};
+
+    console.log(event);
+  }
+
+  handleSubmit(event) {
+    console.log(this.email);
+    event.preventDefault();
+    fetch('https://serene-island-28717.herokuapp.com/login', {
+      method: 'POST',
+      body: {}
+    }).then(response => {
+      if (response.status == 200) {
+        // action creator
+        console.log('response', response);
+      }
+      else {
+        // action creator
+        console.log('response', response);
+      }
+    });
   }
 
   render() {
     return (
       <div>
       <p>This be the login page</p>
-      <form id="LoginForm" action='https://serene-island-28717.herokuapp.com/login'
-      method="POST" onSubmit={this.handleSubmit}>
-       <TextField hintText="Email" id="email" name="email"/>
-       <TextField hintText="Password" id="password" name="password"/>
-       <RaisedButton label="Login" primary={true} type="submit" value="submit"/>
+      <form id="LoginForm" onSubmit={this.handleSubmit}>
+       <TextField hintText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+       <TextField hintText="Password" id="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+       <RaisedButton label="Login" primary={true} value="Submit" type="submit" />
       </form>
       </div>
     );
