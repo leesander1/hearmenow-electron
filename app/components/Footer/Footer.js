@@ -32,24 +32,25 @@ export default class Footer extends Component {
 
     Twilio.Device.incoming((connection) => {
       // send a system notification
-      nc.notify({
-        title: 'Incoming Call from ' + connection.parameters.From,
-        message: 'Would you like to:',
-        closeLabel: 'Decline',
-        actions: 'Accept',
-        wait: true
-      }, function(err, response, metadata) {
-        if(response == 'activate'){
-          this.handleAcceptedCall(connection);
-        }else if (response == 'closed') {
-          this.handleAcceptedCall(connection);
-        }
-      });
+      // nc.notify({
+      //   title: 'Incoming Call from ' + connection.parameters.From,
+      //   message: 'Would you like to:',
+      //   closeLabel: 'Decline',
+      //   actions: 'Accept',
+      //   wait: true
+      // }, function(err, response, metadata) {
+      //   if(response == 'activate'){
+      //     handleAcceptedCall(connection);
+      //   }else if (response == 'closed') {
+      //     this.handleAcceptedCall(connection);
+      //   }
+      // });
+      this.handleAcceptedCall(connection);
     });
   }
 
   handleAcceptedCall(connection) {
-    this.props.router.push('dialer', connection);
+    this.props.router.push('/dialer');
   }
 
   render() {
