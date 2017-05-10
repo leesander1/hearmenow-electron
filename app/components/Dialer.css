@@ -8,6 +8,32 @@
   margin: 20px 0;
 }
 
+.incomingCallNumber {
+  text-align: center;
+  font-size: 28px;
+  color:#00BCD4;
+}
+
+.incomingCallButtonContainer {
+  text-align: center;
+}
+
+.incomingCallButton:first-child {
+  margin-right: 25px;
+}
+
+.incomingCallButton > button,
+.incomingCallButton > button > div,
+.incomingCallButton > button > div > div {
+  height: 65px!important;
+  width: 65px!important;
+  color: white;
+}
+
+.incomingCallButton > button > div > div {
+  line-height: 64px!important;
+}
+
 .phoneIcon {
   font-size: 28px!important;
   line-height: 65px!important;
@@ -28,12 +54,14 @@
   font-size: 12px;
 }
 
-button, button > div, button > div > div {
+.keyButton > button,
+.keyButton > button > div,
+.keyButton > button > div > div {
   height: 65px!important;
   width: 65px!important;
 }
 
-button > div > div > div {
+.keyButton > button > div > div > div {
   line-height: initial!important;
 }
 

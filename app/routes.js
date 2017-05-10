@@ -6,6 +6,7 @@ import HomePage from './containers/HomePage';
 import DialerPage from './containers/DialerPage';
 import ContactsPage from './containers/ContactsPage';
 import LoginPage from './containers/LoginPage';
+import SignUpPage from './containers/SignUpPage';
 import SettingsPage from './containers/SettingsPage.js';
 import AuthorizedContainer from './containers/AuthorizedContainer';
 import NavContainter from './containers/NavContainter';
@@ -15,6 +16,7 @@ export default (
     <Route path="/" component={App}>
       <IndexRedirect to="login" />
       <Route path="login" component={LoginPage} />
+      <Route path="signup" component={SignUpPage} />
       <Route component={AuthorizedContainer}>
         <Route path="dashboard" component={NavContainter}>
           <Route path="home" component={HomePage} />

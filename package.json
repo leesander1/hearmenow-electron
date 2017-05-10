@@ -179,6 +179,7 @@
     "material-ui": "^0.17.4",
     "prop-types": "^15.5.0",
     "node-notifier": "^5.1.2",
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-debounce-input": "^3.0.0",
     "react-cookie": "^2.0.6",

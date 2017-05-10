@@ -1,15 +1,14 @@
+// @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { TextField, FlatButton } from 'material-ui';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'Redux';
 import PropTypes from 'prop-types';
-import { TextField, FlatButton } from 'material-ui';
 import { loginUser } from '../actions/index';
 import styles from '../components/Login/Login.css';
 import Login from '../components/Login/Login';
 
-
-class LoginPage extends Component {
+class SignUpPage extends Component {
 
   static propTypes = {
     loginUser: PropTypes.func,
@@ -17,7 +16,7 @@ class LoginPage extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '' };
+    this.state = { email: '', password: '', firstName: '', lastName: '' };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,11 +39,13 @@ class LoginPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const url = 'https://serene-island-28717.herokuapp.com/login';
+    const url = 'https://serene-island-28717.herokuapp.com/signup';
 
     const data = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName
     }
 
     const myHeaders = new Headers({
@@ -55,48 +56,60 @@ class LoginPage extends Component {
       method: 'POST',
       body: JSON.stringify(data),
       headers: myHeaders
-    };
+    }
 
     fetch(url, fetchData)
     .then(response => {
-      if (response.status === 200) {
-        // action creator
-
+      // action creator
+      if (response.status === 201) {
         response.json().then(data => {
-          // console.log(data);
+          // console.log('Signup Response: ', data);
           this.props.loginUser(data);
-        }).catch(error => {
-          console.log('Reponse error: ', error);
         });
         // console.log('response', response);
-      } else {
+      }
+      else {
         // action creator
         // TODO: Handle errors and notify user
         console.log('response', response);
       }
     }).catch(error => {
-      console.log('Fetch error: ', error);
+      console.log('Error: ', error);
     });
   }
 
   render() {
     return (
       <div>
-        <form id="login" onSubmit={this.handleSubmit}>
+        <form id="signup" onSubmit={this.handleSubmit}>
 
           <div className={`${styles.logo}`}>
             <img src="../resources/icon.png" alt="HearMeNow Logo" />
           </div>
 
-          <h1>HearMeNow</h1>
-          <h2>User Login</h2>
+          <h1>Sign Up</h1>
+
+          <TextField
+            type="text"
+            floatingLabelText="First Name"
+            id="firstName"
+            name="firstName"
+            value={this.state.first}
+            onChange={this.handleChange.bind(this)} />
+
+          <TextField
+            type="text"
+            floatingLabelText="Last Name"
+            id="lastName"
+            name="lastName"
+            value={this.state.last}
+            onChange={this.handleChange.bind(this)} />
 
           <TextField
             type="email"
             floatingLabelText="Email"
             id="email"
             name="email"
-            className={styles.textFieldWidth}
             value={this.state.email}
             onChange={this.handleChange.bind(this)} />
 
@@ -104,25 +117,16 @@ class LoginPage extends Component {
             floatingLabelText="Password"
             id="password"
             name="password"
-            className={styles.textFieldWidth}
             type="password"
             value={this.state.password}
             onChange={this.handleChange.bind(this)} />
 
-          <div
-            className={styles.loginSignupContainer}>
+          <div className={`${styles.signupContainer}`}>
             <FlatButton
-              label="Login"
+              label="Create Account"
               primary
-              className={styles.login}
-              type="submit" />
-
-            <Link to="/signup">
-              <FlatButton
-                label="Sign Up"
-                className={styles.signup}
-                primary />
-            </Link>
+              type="submit"
+              className={`${styles.signup}`} />
           </div>
 
         </form>
@@ -144,4 +148,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ loginUser }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage);

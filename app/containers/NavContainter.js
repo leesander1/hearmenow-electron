@@ -17,7 +17,7 @@ class NavContainter extends Component {
             <div className="content">
               {this.props.children}
             </div>
-            <Footer />
+            <Footer router={this.props.router}/>
           </div>
         </MuiThemeProvider>
       </div>
