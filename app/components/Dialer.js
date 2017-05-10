@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { FloatingActionButton, red500, green500 } from 'material-ui';
 import NumberInputText from './DialerComponents/NumberInputText';
 import LogBox from './DialerComponents/LogBox';
 import CallButton from './DialerComponents/CallButton';
 import DTMFTone from './DialerComponents/DTMFTone';
-import { connect } from 'react-redux';
-import { FloatingActionButton, red500, green500 } from 'material-ui';
+import styles from './Dialer.css';
 
 class Dialer extends Component {
 
@@ -120,41 +121,47 @@ class Dialer extends Component {
   }
 
   render() {
-    if (this.state.receivingCall == true) {
+    if (this.state.receivingCall === true) {
       return (
         <div>
-          <h2>Incoming call from {this.state.callerId}</h2>
-          <FloatingActionButton
-            backgroundColor={'green500'}
-            onClick={this.handleAcceptedCall}>Accept</FloatingActionButton>
-          <FloatingActionButton
-            backgroundColor={'red500'}
-            onClick={this.handleDeclinedCall}>Decline</FloatingActionButton>
-        </div>
-      );
-    }
-    else {
-      return (
-        <div id="dialer">
-          <div id="dial-form" className="input-group input-group-sm">
-            <NumberInputText
-              currentNumber={this.state.currentNumber}
-              handleOnChange={this.handleChangeNumber} />
+          <h2>Incoming call from</h2>
+          <h3
+            className={styles.incomingCallNumber}>{this.state.callerId}</h3>
+          <div
+            className={styles.incomingCallButtonContainer}>
+            <FloatingActionButton
+              className={styles.incomingCallButton}
+              backgroundColor="#4CAF50"
+              onClick={this.handleAcceptedCall}>Accept</FloatingActionButton>
+            <FloatingActionButton
+              className={styles.incomingCallButton}
+              backgroundColor="#F44336"
+              onClick={this.handleDeclinedCall}>Decline</FloatingActionButton>
           </div>
-
-          <DTMFTone
-            handleOnChange={this.handleDialerInput} />
-
-          <CallButton
-            handleOnClick={this.handleToggleCall}
-            disabled={!this.state.isValidNumber}
-            onPhone={this.state.onPhone} />
-
-          <LogBox text={this.state.log} />
-
         </div>
       );
     }
+
+    return (
+      <div id="dialer">
+        <div id="dial-form" className="input-group input-group-sm">
+          <NumberInputText
+            currentNumber={this.state.currentNumber}
+            handleOnChange={this.handleChangeNumber} />
+        </div>
+
+        <DTMFTone
+          handleOnChange={this.handleDialerInput} />
+
+        <CallButton
+          handleOnClick={this.handleToggleCall}
+          disabled={!this.state.isValidNumber}
+          onPhone={this.state.onPhone} />
+
+        <LogBox text={this.state.log} />
+
+      </div>
+    );
   }
 }
 
