@@ -57,13 +57,12 @@ class SignUpPage extends Component {
 
     fetch(url, fetchData)
     .then(response => {
-      if (response.status == 200) {
-        // action creator
-
+      // action creator
+      if (response.status === 201) {
         response.json().then(data => {
-          // console.log(data);
+          // console.log('Signup Response: ', data);
           this.props.loginUser(data);
-        })
+        });
         // console.log('response', response);
       }
       else {
