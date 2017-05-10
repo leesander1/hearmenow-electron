@@ -24,6 +24,10 @@ class Dialer extends Component {
 
     this.handleAcceptedCall = this.handleAcceptedCall.bind(this);
     this.handleDeclinedCall = this.handleDeclinedCall.bind(this);
+    this.handleDialerInput = this.handleDialerInput.bind(this);
+    this.handleToggleCall = this.handleToggleCall.bind(this);
+    this.handleChangeNumber = this.handleChangeNumber.bind(this);
+    this.updateLog = this.updateLog.bind(this);
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -102,7 +106,8 @@ class Dialer extends Component {
     this.setState({
       receivingCall: false,
       callerId: '',
-      onPhone: true
+      onPhone: true,
+      currentNumber: this.props.incomingCallConnection.parameters.From
     });
   }
 

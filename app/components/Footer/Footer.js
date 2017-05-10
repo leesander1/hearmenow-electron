@@ -31,7 +31,7 @@ class Footer extends Component {
   handleIncomingCall(connection) {
     // add the connection to the redux store
     this.props.receivingCall(connection);
-    this.props.router.push('/dialer');
+    this.props.router.push('/dashboard/dialer');
   }
 
   render() {
