@@ -49,7 +49,7 @@ export default class ContactDisplay extends Component {
               }
               secondaryText={contact.number}
               rightIcon={
-                <Link to="/dialer" params={{ phoneNumber: contact.number }}>
+                <Link to="/dialer">
                   <FontIcon
                     hoverColor={blue500}
                     onClick={() => this.pressCall(contact.number)}

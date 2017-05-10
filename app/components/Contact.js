@@ -14,6 +14,8 @@ export default class Contact extends Component {
     this.state = {
       value: ''
     };
+
+    this.handleSearchInput = this.handleSearchInput.bind(this);
   }
 
   handleSearchInput(value) {
