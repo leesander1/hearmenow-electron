@@ -113,7 +113,8 @@ class Dialer extends Component {
       receivingCall: false,
       callerId: '',
       onPhone: true,
-      currentNumber: this.props.incomingCallConnection.parameters.From
+      currentNumber: this.props.incomingCallConnection.parameters.From,
+      isValidNumber: true
     });
   }
 
