@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import NumberInputText from './DialerComponents/NumberInputText';
 import LogBox from './DialerComponents/LogBox';
 import CallButton from './DialerComponents/CallButton';
-import MuteButton from './DialerComponents/MuteButton';
 import DTMFTone from './DialerComponents/DTMFTone';
 
 export default class Dialer extends Component {
