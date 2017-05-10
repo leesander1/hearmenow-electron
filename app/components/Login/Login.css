@@ -11,7 +11,6 @@ h2 {
   margin-bottom: 0px;
   text-align: center;
   font-size: 25px;
-
 }
 
 form {
@@ -27,13 +26,26 @@ form {
   width: 110px;
 }
 
+.textFieldWidth {
+  width: 263px!important;
+}
+
 .signupContainer {
   text-align: center;
   margin-top: 15px;
 }
 
-.signup div span {
+.loginSignupContainer {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.login div span, .signup div span {
   padding-left: initial!important;
   padding-right: initial!important;
   font-size: 18px!important;
+}
+
+.login {
+  margin-right: 20px!important;
 }

@@ -8,7 +8,6 @@ import { loginUser } from '../actions/index';
 import styles from '../components/Login/Login.css';
 import Login from '../components/Login/Login';
 
-
 class SignUpPage extends Component {
 
   static propTypes = {
@@ -74,6 +73,8 @@ class SignUpPage extends Component {
         // TODO: Handle errors and notify user
         console.log('response', response);
       }
+    }).catch(error => {
+      console.log('Error: ', error);
     });
   }
 
@@ -109,7 +110,6 @@ class SignUpPage extends Component {
             floatingLabelText="Email"
             id="email"
             name="email"
-            errorText="Enter a valid email"
             value={this.state.email}
             onChange={this.handleChange.bind(this)} />
 
@@ -124,7 +124,7 @@ class SignUpPage extends Component {
           <div className={`${styles.signupContainer}`}>
             <FlatButton
               label="Create Account"
-              primary={true}
+              primary
               type="submit"
               className={`${styles.signup}`} />
           </div>
@@ -138,7 +138,7 @@ class SignUpPage extends Component {
 function mapStateToProps(state) {
   return {
     authenticated: state.auth.authenticated
-  }
+  };
 }
 
 // anything returned from this function will end up as props for this container
