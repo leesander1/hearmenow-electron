@@ -1,29 +1,30 @@
-// @flow
 import React, { Component } from 'react';
-import Login from '../components/Login/Login';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'Redux';
-import { loginUser } from '../actions/index';
 import PropTypes from 'prop-types';
-import { TextField, FlatButton, Card } from 'material-ui';
+import { TextField, FlatButton } from 'material-ui';
+import { loginUser } from '../actions/index';
 import styles from '../components/Login/Login.css';
-import { Link } from 'react-router';
+import Login from '../components/Login/Login';
 
-const style = {
-  margin: 12,
-};
 
 class LoginPage extends Component {
+
+  static propTypes = {
+    loginUser: PropTypes.func,
+  }
+
   constructor(props) {
     super(props);
-    this.state = {email: '', password: ''};
+    this.state = { email: '', password: '' };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillUpdate(nextProps) {
-    if (nextProps.authenticated){
+    if (nextProps.authenticated) {
       this.props.router.replace('/dashboard/home');
     }
   }
@@ -32,7 +33,7 @@ class LoginPage extends Component {
     const target = event.target;
     const name = target.name;
     this.setState({
-      [name]:target.value
+      [name]: target.value
     });
   }
 
@@ -41,64 +42,90 @@ class LoginPage extends Component {
 
     const url = 'https://serene-island-28717.herokuapp.com/login';
 
-    let data = {
+    const data = {
       email: this.state.email,
       password: this.state.password
     }
 
-    let myHeaders = new Headers({
-      "Content-Type" : "application/json"
-    })
+    const myHeaders = new Headers({
+      'Content-Type': 'application/json'
+    });
 
-    let fetchData = {
+    const fetchData = {
       method: 'POST',
       body: JSON.stringify(data),
       headers: myHeaders
-    }
+    };
 
     fetch(url, fetchData)
     .then(response => {
-      if (response.status == 200) {
+      if (response.status === 200) {
         // action creator
 
         response.json().then(data => {
-          //console.log(data);
+          // console.log(data);
           this.props.loginUser(data);
-        })
-        //console.log('response', response);
-      }
-      else {
+        }).catch(error => {
+          console.log('Reponse error: ', error);
+        });
+        // console.log('response', response);
+      } else {
         // action creator
         // TODO: Handle errors and notify user
         console.log('response', response);
       }
+    }).catch(error => {
+      console.log('Fetch error: ', error);
     });
-
   }
 
   render() {
     return (
       <div>
-      <form id="login" onSubmit={this.handleSubmit} >
-        <div>
-          <h1> HearMeNow </h1>
-        </div>
-          <div>
-          <h2> User Login </h2>
-        </div>
-        <div>
-          <TextField  type="text" floatingLabelText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange.bind(this)}/>
-        </div>
-        <div>
-          <TextField floatingLabelText="Password" id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
-        </div>
-        <div>
-          <FlatButton label="Login" primary={true} style={style} type="submit"></FlatButton>
-          <Link to="/signup">
-          <FlatButton label="Sign Up" primary={true} style={style}></FlatButton>
-          </Link>
-        </div>
-      </form>
+        <form id="login" onSubmit={this.handleSubmit}>
+
+          <div className={`${styles.logo}`}>
+            <img src="../resources/icon.png" alt="HearMeNow Logo" />
+          </div>
+
+          <h1>HearMeNow</h1>
+          <h2>User Login</h2>
+
+          <TextField
+            type="email"
+            floatingLabelText="Email"
+            id="email"
+            name="email"
+            className={styles.textFieldWidth}
+            value={this.state.email}
+            onChange={this.handleChange.bind(this)} />
+
+          <TextField
+            floatingLabelText="Password"
+            id="password"
+            name="password"
+            className={styles.textFieldWidth}
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange.bind(this)} />
+
+          <div
+            className={styles.loginSignupContainer}>
+            <FlatButton
+              label="Login"
+              primary
+              className={styles.login}
+              type="submit" />
+
+            <Link to="/signup">
+              <FlatButton
+                label="Sign Up"
+                className={styles.signup}
+                primary />
+            </Link>
+          </div>
+
+        </form>
       </div>
     );
   }
@@ -107,14 +134,14 @@ class LoginPage extends Component {
 function mapStateToProps(state) {
   return {
     authenticated: state.auth.authenticated
-  }
+  };
 }
 
 // anything returned from this function will end up as props for this container
 function mapDispatchToProps(dispatch) {
   // the first param is an obj where the key will end up being a prop for this container
   // the second param is the action that will be created
-  return bindActionCreators({loginUser: loginUser}, dispatch);
+  return bindActionCreators({ loginUser }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
