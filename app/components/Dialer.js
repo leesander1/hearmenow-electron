@@ -26,12 +26,11 @@ class Dialer extends Component {
     this.handleDeclinedCall = this.handleDeclinedCall.bind(this);
   }
 
-  componentWillUpdate(nextProps) {
-    console.log(nextProps);
-    this.setState({
-      receivingCall: true,
-      callerId: nextProps.incomingCallConnection.parameters.From
-    });
+  componentWillUpdate(nextProps, nextState) {
+    if(nextProps.incomingCallConnection != null && nextProps.incomingCallConnection._status == 'pending') {
+      nextState.receivingCall = true;
+      nextState.callerId = nextProps.incomingCallConnection.parameters.From;
+    }
   }
 
   componentDidMount() {
