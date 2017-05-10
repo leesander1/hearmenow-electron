@@ -122,7 +122,10 @@ class Dialer extends Component {
     this.props.incomingCallConnection.ignore();
     this.setState({
       receivingCall: false,
-      callerId: ''
+      callerId: '',
+      onPhone: false,
+      currentNumber: '',
+      isValidNumber: false
     });
   }
 
