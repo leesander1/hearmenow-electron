@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'Redux';
 import { loginUser } from '../actions/index';
 import PropTypes from 'prop-types';
-import { TextField, RaisedButton } from 'material-ui';
+import { TextField, FlatButton, Card } from 'material-ui';
+
+const style = {
+  margin: 12,
+};
 
 class LoginPage extends Component {
   constructor(props) {
@@ -28,13 +32,11 @@ class LoginPage extends Component {
     this.setState({
       [name]:target.value
     });
-    console.log(name + " : " + target.value);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.email);
-    console.log(this.state.password);
+
     const url = 'https://serene-island-28717.herokuapp.com/login';
 
     let data = {
@@ -75,11 +77,16 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-      <p>This be the login page</p>
       <form id="login" onSubmit={this.handleSubmit} >
-       <TextField  type="text" floatingLabelText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange.bind(this)}/>
-       <TextField floatingLabelText="Password" id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
-       <RaisedButton label="Login" primary={true} type="submit" />
+        <div>
+          <TextField  type="text" floatingLabelText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange.bind(this)}/>
+        </div>
+        <div>
+          <TextField floatingLabelText="Password" id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
+        </div>
+        <div>
+          <FlatButton label="Login" primary={true} style={style} type="submit"></FlatButton>
+        </div>
       </form>
       </div>
     );
