@@ -27,6 +27,7 @@ class Dialer extends Component {
     this.handleDialerInput = this.handleDialerInput.bind(this);
     this.handleToggleCall = this.handleToggleCall.bind(this);
     this.handleChangeNumber = this.handleChangeNumber.bind(this);
+    this.handleDisconnectCall = this.handleDisconnectCall.bind(this);
     this.updateLog = this.updateLog.bind(this);
   }
 
@@ -44,6 +45,11 @@ class Dialer extends Component {
         callerId: this.props.incomingCallConnection.parameters.From
       });
     }
+
+    // need to add this functionality to the redux store!
+    Twilio.Device.disconnect(() => {
+      this.handleDisconnectCall();
+    });
   }
 
   updateLog(text) {
@@ -116,6 +122,13 @@ class Dialer extends Component {
     this.setState({
       receivingCall: false,
       callerId: ''
+    });
+  }
+
+  handleDisconnectCall() {
+    this.setState({
+      onPhone: false,
+      log: 'Ended Call Successfully'
     });
   }
 
