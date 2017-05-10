@@ -31,7 +31,7 @@ export default class Footer extends Component {
     });
 
     Twilio.Device.incoming((connection) => {
-      // send a system notification
+      // send a system notification right now we are going to scrap this, not a high priority
       // nc.notify({
       //   title: 'Incoming Call from ' + connection.parameters.From,
       //   message: 'Would you like to:',

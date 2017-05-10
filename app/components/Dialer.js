@@ -24,7 +24,7 @@ export default class Dialer extends Component {
   }
 
   componentDidMount() {
-    console.log('my current props', this.props);
+    console.log('my current props', this.props.connection);
   }
 
   updateLog(text) {
