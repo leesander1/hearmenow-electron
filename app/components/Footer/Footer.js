@@ -28,7 +28,6 @@ export default class Footer extends Component {
 
     Twilio.Device.ready(() => {
       // need to do something here
-      console.log(this.props.router);
     });
 
     Twilio.Device.incoming((connection) => {
@@ -50,7 +49,7 @@ export default class Footer extends Component {
   }
 
   handleAcceptedCall(connection) {
-    this.router.push('dialer', connection);
+    this.props.router.push('dialer', connection);
   }
 
   render() {
