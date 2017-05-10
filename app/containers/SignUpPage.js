@@ -39,13 +39,13 @@ class SignUpPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const url = 'https://serene-island-28717.herokuapp.com/login';
+    const url = 'https://serene-island-28717.herokuapp.com/signup';
 
     let data = {
       email: this.state.email,
       password: this.state.password,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName
+      first: this.state.firstName,
+      last: this.state.lastName
     }
 
     let myHeaders = new Headers({
@@ -64,10 +64,10 @@ class SignUpPage extends Component {
         // action creator
 
         response.json().then(data => {
-          //console.log(data);
+          // console.log(data);
           this.props.loginUser(data);
         })
-        //console.log('response', response);
+        // console.log('response', response);
       }
       else {
         // action creator
