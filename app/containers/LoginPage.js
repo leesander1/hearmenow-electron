@@ -5,12 +5,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'Redux';
 import { loginUser } from '../actions/index';
 import PropTypes from 'prop-types';
-import { TextField, RaisedButton } from 'material-ui';
+import { TextField, FlatButton, Card } from 'material-ui';
+
+const style = {
+  margin: 12,
+};
 
 class LoginPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {email: '', password: ''};
 
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,19 +26,67 @@ class LoginPage extends Component {
     }
   }
 
-  handleSubmit() {
-    // need to call action creator here
+  handleChange(event) {
+    const target = event.target;
+    const name = target.name;
+    this.setState({
+      [name]:target.value
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const url = 'https://serene-island-28717.herokuapp.com/login';
+
+    let data = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    let myHeaders = new Headers({
+      "Content-Type" : "application/json"
+    })
+
+    let fetchData = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: myHeaders
+    }
+
+    fetch(url, fetchData)
+    .then(response => {
+      if (response.status == 200) {
+        // action creator
+
+        response.json().then(data => {
+          //console.log(data);
+          this.props.loginUser(data);
+        })
+        //console.log('response', response);
+      }
+      else {
+        // action creator
+        // TODO: Handle errors and notify user
+        console.log('response', response);
+      }
+    });
+
   }
 
   render() {
     return (
       <div>
-      <p>This be the login page</p>
-      <form id="LoginForm" action='https://serene-island-28717.herokuapp.com/login'
-      method="POST" onSubmit={this.handleSubmit}>
-       <TextField hintText="Email" id="email" name="email"/>
-       <TextField hintText="Password" id="password" name="password"/>
-       <RaisedButton label="Login" primary={true} type="submit" value="submit"/>
+      <form id="login" onSubmit={this.handleSubmit} >
+        <div>
+          <TextField  type="text" floatingLabelText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange.bind(this)}/>
+        </div>
+        <div>
+          <TextField floatingLabelText="Password" id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
+        </div>
+        <div>
+          <FlatButton label="Login" primary={true} style={style} type="submit"></FlatButton>
+        </div>
       </form>
       </div>
     );
