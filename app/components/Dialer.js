@@ -4,8 +4,10 @@ import NumberInputText from './DialerComponents/NumberInputText';
 import LogBox from './DialerComponents/LogBox';
 import CallButton from './DialerComponents/CallButton';
 import DTMFTone from './DialerComponents/DTMFTone';
+import { connect } from 'react-redux';
+import { FloatingActionButton, red500, green500 } from 'material-ui';
 
-export default class Dialer extends Component {
+class Dialer extends Component {
 
   constructor(props) {
     super(props);
@@ -15,16 +17,26 @@ export default class Dialer extends Component {
       onPhone: false,
       countryCode: '1',
       currentNumber: '',
-      isValidNumber: false
+      isValidNumber: false,
+      receivingCall: false,
+      callerId: ''
     };
+
+    this.handleAcceptedCall = this.handleAcceptedCall.bind(this);
+    this.handleDeclinedCall = this.handleDeclinedCall.bind(this);
   }
 
   componentWillMount(nextProps) {
-    console.log('next props',nextProps);
+    console.log('****my new props', nextProps);
   }
 
   componentDidMount() {
-    console.log('my current props', this.props.connection);
+    if (this.props.incomingCallConnection != null) {
+      this.setState({
+        receivingCall: true,
+        callerId: this.props.incomingCallConnection.parameters.From
+      });
+    }
   }
 
   updateLog(text) {
@@ -83,26 +95,59 @@ export default class Dialer extends Component {
     }
   }
 
+  handleAcceptedCall() {
+    this.props.incomingCallConnection.accept();
+    this.setState({receivingCall: false});
+  }
+
+  handleDeclinedCall() {
+    this.props.incomingCallConnection.ignore();
+    this.setState({receivingCall: false});
+  }
+
   render() {
-    return (
-      <div id="dialer">
-        <div id="dial-form" className="input-group input-group-sm">
-          <NumberInputText
-            currentNumber={this.state.currentNumber}
-            handleOnChange={this.handleChangeNumber} />
+    if (this.state.receivingCall == true) {
+      return (
+        <div>
+          <h2>Incoming call from {this.state.callerId}</h2>
+          <FloatingActionButton
+            backgroundColor={'green500'}
+            onClick={this.handleAcceptedCall}>Accept</FloatingActionButton>
+          <FloatingActionButton
+            backgroundColor={'red500'}
+            onClick={this.handleDeclinedCall}>Decline</FloatingActionButton>
         </div>
+      );
+    }
+    else {
+      return (
+        <div id="dialer">
+          <div id="dial-form" className="input-group input-group-sm">
+            <NumberInputText
+              currentNumber={this.state.currentNumber}
+              handleOnChange={this.handleChangeNumber} />
+          </div>
 
-        <DTMFTone
-          handleOnChange={this.handleDialerInput} />
+          <DTMFTone
+            handleOnChange={this.handleDialerInput} />
 
-        <CallButton
-          handleOnClick={this.handleToggleCall}
-          disabled={!this.state.isValidNumber}
-          onPhone={this.state.onPhone} />
+          <CallButton
+            handleOnClick={this.handleToggleCall}
+            disabled={!this.state.isValidNumber}
+            onPhone={this.state.onPhone} />
 
-        <LogBox text={this.state.log} />
+          <LogBox text={this.state.log} />
 
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    incomingCallConnection: state.incomingCallConnection.connection
+  }
+}
+
+export default connect(mapStateToProps)(Dialer);

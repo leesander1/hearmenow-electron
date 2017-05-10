@@ -5,16 +5,15 @@ import styles from './Footer.css';
 import NetworkStatus from '../NetworkStatus/NetworkStatus';
 import FontIcon from 'material-ui/FontIcon';
 import { red500, green500, cyan500, blue500, pinkA200 } from 'material-ui/styles/colors';
-import notifier from 'notifier';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'Redux';
+import { receivingCall } from '../../actions/index';
 
-// notifier object
-const nc = new notifier.NotificationCenter();
-
-export default class Footer extends Component {
+class Footer extends Component {
   constructor(props) {
     super(props);
 
-    this.handleAcceptedCall = this.handleAcceptedCall.bind(this);
+    this.handleIncomingCall = this.handleIncomingCall.bind(this);
   }
 
   async componentDidMount() {
@@ -31,25 +30,13 @@ export default class Footer extends Component {
     });
 
     Twilio.Device.incoming((connection) => {
-      // send a system notification right now we are going to scrap this, not a high priority
-      // nc.notify({
-      //   title: 'Incoming Call from ' + connection.parameters.From,
-      //   message: 'Would you like to:',
-      //   closeLabel: 'Decline',
-      //   actions: 'Accept',
-      //   wait: true
-      // }, function(err, response, metadata) {
-      //   if(response == 'activate'){
-      //     handleAcceptedCall(connection);
-      //   }else if (response == 'closed') {
-      //     this.handleAcceptedCall(connection);
-      //   }
-      // });
-      this.handleAcceptedCall(connection);
+      this.handleIncomingCall(connection);
     });
   }
 
-  handleAcceptedCall(connection) {
+  handleIncomingCall(connection) {
+    // add the connection to the redux store
+    this.props.receivingCall(connection);
     this.props.router.push('/dialer');
   }
 
@@ -64,3 +51,15 @@ export default class Footer extends Component {
     );
   }
 }
+
+// Not sure why we need  this
+// But if it's removed, it will break!
+function mapStateToProps(state) {
+  return {}
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({receivingCall: receivingCall}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);
