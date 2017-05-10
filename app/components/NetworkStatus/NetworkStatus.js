@@ -58,33 +58,36 @@ export default class NetworkStatus extends React.Component {
 
   handleOnlineRequestClose = () => {
     this.setState({
-      online_open: false,
+      online_open: false
     });
   }
 
   handleOfflineRequestClose = () => {
     this.setState({
-      offline_open: false,
+      offline_open: false
     });
   }
+
   trigger () {
     var x = this.state.connection ? nofityOnline() : notiftyOffline();
   }
+
   render() {
     var input = this.state.connection ? <div><FontIcon className="material-icons" style={styles.icon} color={green500}>adjust</FontIcon>
     <Snackbar
       open={this.state.online_open}
-      message="✔️📶 You are now online 📶✔️"
+      message="You are now online"
       autoHideDuration={2000}
-      onRequestClose={this.handleOnlineRequestClose}>
-    </Snackbar></div>:
+      onRequestClose={this.handleOnlineRequestClose}/>
+    </div> :
     <div><FontIcon className="material-icons" style={styles.icon} color={red500}>adjust</FontIcon>
     <Snackbar
-      open={!this.state.offline_open}
-      message="❌📶 No internet connection 📶❌"
+      open={this.state.offline_open}
+      message="No internet connection"
       autoHideDuration={2000}
-      onRequestClose={this.handleOfflineRequestClose}>
-    </Snackbar></div>;
+      onRequestClose={this.handleOfflineRequestClose}/>
+    </div>;
+
     return (
         <div>
          {input}
