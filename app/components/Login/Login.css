@@ -41,8 +41,6 @@ form {
 }
 
 .login div span, .signup div span {
-  padding-left: initial!important;
-  padding-right: initial!important;
   font-size: 18px!important;
 }
 
