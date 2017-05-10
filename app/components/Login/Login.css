@@ -1,0 +1,39 @@
+h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 30px;
+  color:#00BCD4;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+  font-size: 25px;
+
+}
+
+form {
+  padding: 2rem 4rem;
+}
+
+.logo {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.logo img {
+  width: 110px;
+}
+
+.signupContainer {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.signup div span {
+  padding-left: initial!important;
+  padding-right: initial!important;
+  font-size: 18px!important;
+}
