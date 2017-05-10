@@ -1,19 +1,23 @@
 // @flow
 import React, { Component } from 'react';
-import Login from '../components/Login/Login';
+import { TextField, FlatButton } from 'material-ui';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'Redux';
-import { loginUser } from '../actions/index';
 import PropTypes from 'prop-types';
-import { TextField, FlatButton, Card } from 'material-ui';
+import { loginUser } from '../actions/index';
 import styles from '../components/Login/Login.css';
-import { Link } from 'react-router';
+import Login from '../components/Login/Login';
 
 
 class SignUpPage extends Component {
+
+  static propTypes = {
+    loginUser: PropTypes.func,
+  }
+
   constructor(props) {
     super(props);
-    this.state = {email: '', password: '',firstName: '', lastName:''};
+    this.state = { email: '', password: '', firstName: '', lastName: '' };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,18 +42,18 @@ class SignUpPage extends Component {
 
     const url = 'https://serene-island-28717.herokuapp.com/signup';
 
-    let data = {
+    const data = {
       email: this.state.email,
       password: this.state.password,
       firstName: this.state.firstName,
       lastName: this.state.lastName
     }
 
-    let myHeaders = new Headers({
-      "Content-Type" : "application/json"
-    })
+    const myHeaders = new Headers({
+      'Content-Type': 'application/json'
+    });
 
-    let fetchData = {
+    const fetchData = {
       method: 'POST',
       body: JSON.stringify(data),
       headers: myHeaders
