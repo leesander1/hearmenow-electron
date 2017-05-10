@@ -26,8 +26,12 @@ class Dialer extends Component {
     this.handleDeclinedCall = this.handleDeclinedCall.bind(this);
   }
 
-  componentWillMount(nextProps) {
-    console.log('****my new props', nextProps);
+  componentWillUpdate(nextProps) {
+    console.log(nextProps);
+    this.setState({
+      receivingCall: true,
+      callerId: nextProps.incomingCallConnection.parameters.From
+    });
   }
 
   componentDidMount() {
@@ -97,12 +101,18 @@ class Dialer extends Component {
 
   handleAcceptedCall() {
     this.props.incomingCallConnection.accept();
-    this.setState({receivingCall: false});
+    this.setState({
+      receivingCall: false,
+      callerId: ''
+    });
   }
 
   handleDeclinedCall() {
     this.props.incomingCallConnection.ignore();
-    this.setState({receivingCall: false});
+    this.setState({
+      receivingCall: false,
+      callerId: ''
+    });
   }
 
   render() {
