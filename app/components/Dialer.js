@@ -84,9 +84,8 @@ class Dialer extends Component {
       // console.log(`Attempting to connect to: ${n}`);
       Twilio.Device.connect({ phoneNumber: n });
       this.setState({ log: `Calling ${n}` });
-      // console.log(this.state.log);
     } else {
-      // console.log('Hang up');
+
       // hang up call in progress.
       Twilio.Device.disconnectAll();
 
@@ -102,7 +101,8 @@ class Dialer extends Component {
     this.props.incomingCallConnection.accept();
     this.setState({
       receivingCall: false,
-      callerId: ''
+      callerId: '',
+      onPhone: true
     });
   }
 
