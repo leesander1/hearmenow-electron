@@ -6,6 +6,8 @@ import { bindActionCreators } from 'Redux';
 import { loginUser } from '../actions/index';
 import PropTypes from 'prop-types';
 import { TextField, FlatButton, Card } from 'material-ui';
+import styles from '../components/Login/Login.css';
+import { Link } from 'react-router';
 
 const style = {
   margin: 12,
@@ -79,6 +81,12 @@ class LoginPage extends Component {
       <div>
       <form id="login" onSubmit={this.handleSubmit} >
         <div>
+          <h1> HearMeNow </h1>
+        </div>
+          <div>
+          <h2> User Login </h2>
+        </div>
+        <div>
           <TextField  type="text" floatingLabelText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange.bind(this)}/>
         </div>
         <div>
@@ -86,6 +94,9 @@ class LoginPage extends Component {
         </div>
         <div>
           <FlatButton label="Login" primary={true} style={style} type="submit"></FlatButton>
+          <Link to="/signup">
+          <FlatButton label="Sign Up" primary={true} style={style}></FlatButton>
+          </Link>
         </div>
       </form>
       </div>
