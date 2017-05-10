@@ -16,14 +16,8 @@ class Footer extends Component {
     this.handleIncomingCall = this.handleIncomingCall.bind(this);
   }
 
-  async componentDidMount() {
-    const request = await fetch('https://serene-island-28717.herokuapp.com/api/generateToken', {
-      method: 'POST'
-    });
-
-    const twilioToken = await request.json();
-
-    Twilio.Device.setup(twilioToken.token);
+  componentDidMount() {
+    Twilio.Device.setup(this.props.user.twiliotoken);
 
     Twilio.Device.ready(() => {
       // need to do something here
@@ -52,10 +46,10 @@ class Footer extends Component {
   }
 }
 
-// Not sure why we need  this
-// But if it's removed, it will break!
 function mapStateToProps(state) {
-  return {}
+  return {
+    user: state.auth.user
+  }
 }
 
 function mapDispatchToProps(dispatch) {
