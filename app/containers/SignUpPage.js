@@ -9,9 +9,6 @@ import { TextField, FlatButton, Card } from 'material-ui';
 import styles from '../components/Login/Login.css';
 import { Link } from 'react-router';
 
-const style = {
-  margin: 12,
-};
 
 class SignUpPage extends Component {
   constructor(props) {
@@ -23,7 +20,7 @@ class SignUpPage extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    if (nextProps.authenticated){
+    if (nextProps.authenticated) {
       this.props.router.replace('/dashboard/home');
     }
   }
@@ -32,7 +29,7 @@ class SignUpPage extends Component {
     const target = event.target;
     const name = target.name;
     this.setState({
-      [name]:target.value
+      [name]: target.value
     });
   }
 
@@ -44,8 +41,8 @@ class SignUpPage extends Component {
     let data = {
       email: this.state.email,
       password: this.state.password,
-      first: this.state.firstName,
-      last: this.state.lastName
+      firstName: this.state.firstName,
+      lastName: this.state.lastName
     }
 
     let myHeaders = new Headers({
@@ -75,35 +72,61 @@ class SignUpPage extends Component {
         console.log('response', response);
       }
     });
-
   }
 
   render() {
     return (
       <div>
-      <form id="signup" onSubmit={this.handleSubmit} >
-        <div>
-          <h1> HearMeNow </h1>
-        </div>
-        <div>
-          <h2> New User </h2>
-        </div>
-        <div>
-          <TextField  type="text" floatingLabelText="First Name" id="firstName" name="firstName" value={this.state.firstName} onChange={this.handleChange.bind(this)}/>
-        </div>
-        <div>
-          <TextField  type="text" floatingLabelText="Last Name" id="lastName" name="lastName" value={this.state.lastName} onChange={this.handleChange.bind(this)}/>
-        </div>
-        <div>
-          <TextField  type="text" floatingLabelText="Email" id="email" name="email" value={this.state.email} onChange={this.handleChange.bind(this)}/>
-        </div>
-        <div>
-          <TextField floatingLabelText="Password" id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
-        </div>
-        <div>
-          <FlatButton label="Sign Up" primary={true} style={style} type="submit"></FlatButton>
-        </div>
-      </form>
+        <form id="signup" onSubmit={this.handleSubmit}>
+
+          <div className={`${styles.logo}`}>
+            <img src="../resources/icon.png" alt="HearMeNow Logo" />
+          </div>
+
+          <h1>Sign Up</h1>
+
+          <TextField
+            type="text"
+            floatingLabelText="First Name"
+            id="firstName"
+            name="firstName"
+            value={this.state.first}
+            onChange={this.handleChange.bind(this)} />
+
+          <TextField
+            type="text"
+            floatingLabelText="Last Name"
+            id="lastName"
+            name="lastName"
+            value={this.state.last}
+            onChange={this.handleChange.bind(this)} />
+
+          <TextField
+            type="email"
+            floatingLabelText="Email"
+            id="email"
+            name="email"
+            errorText="Enter a valid email"
+            value={this.state.email}
+            onChange={this.handleChange.bind(this)} />
+
+          <TextField
+            floatingLabelText="Password"
+            id="password"
+            name="password"
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange.bind(this)} />
+
+          <div className={`${styles.signupContainer}`}>
+            <FlatButton
+              label="Create Account"
+              primary={true}
+              type="submit"
+              className={`${styles.signup}`} />
+          </div>
+
+        </form>
       </div>
     );
   }
@@ -114,14 +137,12 @@ function mapStateToProps(state) {
     authenticated: state.auth.authenticated
   }
 }
-/*
+
 // anything returned from this function will end up as props for this container
 function mapDispatchToProps(dispatch) {
   // the first param is an obj where the key will end up being a prop for this container
   // the second param is the action that will be created
-  return bindActionCreators({loginUser: loginUser}, dispatch);
+  return bindActionCreators({ loginUser }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
-*/
-export default SignUpPage;
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage);
