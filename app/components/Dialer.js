@@ -137,6 +137,7 @@ class Dialer extends Component {
   handleDisconnectCall() {
     this.setState({
       receivingCall: false,
+      onPhone: false,
       log: 'Ended Call'
     });
   }
