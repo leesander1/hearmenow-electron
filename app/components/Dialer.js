@@ -48,7 +48,11 @@ class Dialer extends Component {
     }
 
     // need to add this functionality to the redux store!
-    Twilio.Device.disconnect(() => {
+    Twilio.Device.disconnect((connection) => {
+      this.handleDisconnectCall();
+    });
+
+    Twilio.Device.cancel((connection) => {
       this.handleDisconnectCall();
     });
   }
@@ -132,8 +136,8 @@ class Dialer extends Component {
 
   handleDisconnectCall() {
     this.setState({
-      onPhone: false,
-      log: 'Ended Call Successfully'
+      receivingCall: false,
+      log: 'Ended Call'
     });
   }
 
