@@ -12,3 +12,13 @@
 .container a {
   font-size: 1.4rem;
 }
+
+.buttonContainer {
+  width: 230px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button div span {
+  font-size: 18px!important;
+}

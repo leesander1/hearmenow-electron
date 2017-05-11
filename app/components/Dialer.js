@@ -33,7 +33,7 @@ class Dialer extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if(nextProps.incomingCallConnection != null && nextProps.incomingCallConnection._status == 'pending') {
+    if (nextProps.incomingCallConnection != null && nextProps.incomingCallConnection._status == 'pending') {
       nextState.receivingCall = true;
       nextState.callerId = nextProps.incomingCallConnection.parameters.From;
     }
@@ -48,11 +48,7 @@ class Dialer extends Component {
     }
 
     // need to add this functionality to the redux store!
-    Twilio.Device.disconnect((connection) => {
-      this.handleDisconnectCall();
-    });
-
-    Twilio.Device.cancel((connection) => {
+    Twilio.Device.disconnect(() => {
       this.handleDisconnectCall();
     });
   }
@@ -137,8 +133,7 @@ class Dialer extends Component {
   handleDisconnectCall() {
     this.setState({
       onPhone: false,
-      receivingCall: false,
-      log: 'Ended Call'
+      log: 'Ended Call Successfully'
     });
   }
 

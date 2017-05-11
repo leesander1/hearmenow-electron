@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router';
+import { FlatButton } from 'material-ui';
 import styles from './Home.css';
-
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <button onClick={getToken}>Get Token</button>
-        <button onClick={sendCall}>Make call</button>
-        <button onClick={endCall}>End call</button>
-        <div className={styles.container} data-tid="container" />
+        <br />
+        <FlatButton
+          label="Get Token"
+          primary
+          onClick={getToken}
+          className={`${styles.button}`} />
+        <br /><br />
+        <FlatButton
+          label="Make call"
+          primary
+          onClick={sendCall}
+          className={`${styles.button}`} />
+        <br /><br />
+        <FlatButton
+          label="End call"
+          primary
+          onClick={endCall}
+          className={`${styles.button}`} />
       </div>
     );
   }

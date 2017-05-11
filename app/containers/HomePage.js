@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Home from '../components/Home/Home';
+import { FlatButton } from 'material-ui';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'Redux';
 import { logoutUser } from '../actions/index';
+import Home from '../components/Home/Home';
+import styles from '../components/Home/Home.css';
 
 class HomePage extends Component {
   constructor(props) {
@@ -23,9 +25,14 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
+      <div className={`${styles.buttonContainer}`}>
         <Home />
-        <button onClick={this.clickHandler}>Log me out!</button>
+        <br />
+        <FlatButton
+          label="Log me out!"
+          primary
+          onClick={this.clickHandler}
+          className={`${styles.button}`} />
       </div>
     );
   }
