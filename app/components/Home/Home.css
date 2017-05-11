@@ -1,0 +1,24 @@
+.container {
+  position: absolute;
+  top: 30%;
+  left: 10px;
+  text-align: center;
+}
+
+.container h2 {
+  font-size: 5rem;
+}
+
+.container a {
+  font-size: 1.4rem;
+}
+
+.buttonContainer {
+  width: 230px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button div span {
+  font-size: 18px!important;
+}
